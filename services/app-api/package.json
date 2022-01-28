@@ -1,0 +1,20 @@
+{
+  "name": "app-api",
+  "description": "",
+  "version": "1.0.0",
+  "main": "handler.js",
+  "scripts": {
+    "test": "serverless-bundle test"
+  },
+  "author": "",
+  "license": "CC0-1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CMSgov/macpro-platform-doc-conversion.git"
+  },
+  "devDependencies": {
+    "serverless-associate-waf": "^1.2.1"
+  },
+  "dependencies": {
+  }
+}
