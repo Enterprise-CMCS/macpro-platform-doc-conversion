@@ -77,7 +77,7 @@ curl -F "data=~@~/Desktop/<some base 64 test_b64.html" --tlsv1.2 https://<output
 
 ## Contributing / To-Do
 
-See current open [issues](https://github.com/CMSgov/macpro-quickstart-serverless/issues) or check out the [project board](https://github.com/CMSgov/macpro-quickstart-serverless/projects/1).
+See current open [issues](https://github.com/CMSgov/macpro-platorm-doc-conversion/issues) or check out the [project board](https://github.com/CMSgov/macpro-quickstart-serverless/projects/1).
 
 Please feel free to open new issues for defects or enhancements.
 
