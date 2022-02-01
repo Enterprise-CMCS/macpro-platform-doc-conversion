@@ -22,7 +22,7 @@ describe("Test prince PDF convertor", () => {
   test("Verify empty event returns error", async () => {
     try {
       const response = await prince({ source: null });
-    } catch(e) {
+    } catch (e) {
       expect(e instanceof Error).toBe(true);
       expect(e.message).toEqual("No data.");
     }
@@ -58,7 +58,7 @@ describe("Test prince PDF convertor", () => {
     const consoleMock = jest.spyOn(console, "log").mockImplementation(() => {});
     try {
       const response = await prince({ body: encodedInput });
-    } catch(e) {
+    } catch (e) {
       expect(e instanceof Error).toBe(true);
       expect(e.message).toEqual(
         "TypeError: Cannot read property 'toString' of null"
