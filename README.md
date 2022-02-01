@@ -3,7 +3,8 @@
 MACPRO Platform document conversion APIs.
 
 Initial API:
-* 508 compliant HTML -> 508 compliant PDF (via Prince XML)
+
+- 508 compliant HTML -> 508 compliant PDF (via Prince XML)
 
 ## Release
 
@@ -33,8 +34,6 @@ Want to deploy from your Mac?
 - brew install yarn
 - sh deploy.sh
 
-
-
 ## Requirements
 
 Node - we enforce using a specific version of node, specified in the file `.nvmrc`. This version matches the Lambda runtime. We recommend managing node versions using [NVM](https://github.com/nvm-sh/nvm#installing-and-updating).
@@ -60,6 +59,7 @@ brew install yarn
 ```
 
 If you'd like to test deploying prior to committing, you can deploy to AWS as follows:
+
 ```
 ./deploy.sh <branch name>
 
@@ -72,8 +72,6 @@ curl -F "data=~@~/Desktop/<some base 64 test_b64.html" --tlsv1.2 https://<output
 # to clean up
 ./destroy.sh <branch name>
 ```
-
-
 
 ## Contributing / To-Do
 
