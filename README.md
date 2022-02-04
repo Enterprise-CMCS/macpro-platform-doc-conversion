@@ -5,6 +5,8 @@ MACPRO Platform document conversion APIs.
 Initial API:
 
 - 508 compliant HTML -> 508 compliant PDF (via Prince XML)
+  - Input needs to be base 64 encoded
+  - Output is base 64 encoded
 
 ## Release
 
