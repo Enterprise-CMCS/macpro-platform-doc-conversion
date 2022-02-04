@@ -1,19 +1,22 @@
-# macpro-platform-doc-conversion ![Build](https://github.com/CMSgov/macpro-quickstart-serverless/workflows/Deploy/badge.svg?branch=master) [![latest release](https://img.shields.io/github/release/cmsgov/macpro-quickstart-serverless.svg)](https://github.com/cmsgov/macpro-quickstart-serverless/releases/latest) [![Maintainability](https://api.codeclimate.com/v1/badges/1449ad929006f559756b/maintainability)](https://codeclimate.com/github/CMSgov/macpro-quickstart-serverless/maintainability) [![CodeQL](https://github.com/CMSgov/macpro-quickstart-serverless/actions/workflows/codeql-analysis.yml/badge.svg?branch=master)](https://github.com/CMSgov/macpro-quickstart-serverless/actions/workflows/codeql-analysis.yml) [![Dependabot](https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot)](https://dependabot.com/) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Test Coverage](https://api.codeclimate.com/v1/badges/1449ad929006f559756b/test_coverage)](https://codeclimate.com/github/CMSgov/macpro-quickstart-serverless/test_coverage)
+# macpro-platform-doc-conversion ![Build](https://github.com/CMSgov/macpro-platform-doc-conversion/workflows/Deploy/badge.svg?branch=master) [![latest release](https://img.shields.io/github/release/cmsgov/macpro-platform-doc-conversion.svg)](https://github.com/cmsgov/macpro-platform-doc-conversion/releases/latest) [![Maintainability](https://api.codeclimate.com/v1/badges/1449ad929006f559756b/maintainability)](https://codeclimate.com/github/CMSgov/macpro-platform-doc-conversion/maintainability) [![CodeQL](https://github.com/CMSgov/macpro-platform-doc-conversion/actions/workflows/codeql-analysis.yml/badge.svg?branch=master)](https://github.com/CMSgov/macpro-platform-doc-conversion/actions/workflows/codeql-analysis.yml) [![Dependabot](https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot)](https://dependabot.com/) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Test Coverage](https://api.codeclimate.com/v1/badges/1449ad929006f559756b/test_coverage)](https://codeclimate.com/github/CMSgov/macpro-platform-doc-conversion/test_coverage)
 
 MACPRO Platform document conversion APIs.
 
 Initial API:
-* 508 compliant HTML -> 508 compliant PDF (via Prince XML)
+
+- 508 compliant HTML -> 508 compliant PDF (via Prince XML)
+  - Input needs to be base 64 encoded
+  - Output is base 64 encoded
 
 ## Release
 
 Our product is promoted through branches. Master is merged to val to affect a master release, and val is merged to production to affect a production release. Please use the buttons below to promote/release code to higher environments.<br />
 
-| branch     | status                                                                                                             | release                                                                                                                                                                                                                                                   |
-| ---------- | ------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| master     | ![master](https://github.com/CMSgov/macpro-quickstart-serverless/workflows/Deploy/badge.svg?branch=master)         | [![release to master](https://img.shields.io/badge/-Create%20PR-blue.svg)](https://github.com/CMSgov/macpro-quickstart-serverless/compare?quick_pull=1)                                                                                                   |
-| val        | ![val](https://github.com/CMSgov/macpro-quickstart-serverless/workflows/Deploy/badge.svg?branch=val)               | [![release to val](https://img.shields.io/badge/-Create%20PR-blue.svg)](https://github.com/CMSgov/macpro-quickstart-serverless/compare/val...master?quick_pull=1&template=PULL_REQUEST_TEMPLATE.val.md&title=Release%20to%20Val)                          |
-| production | ![production](https://github.com/CMSgov/macpro-quickstart-serverless/workflows/Deploy/badge.svg?branch=production) | [![release to production](https://img.shields.io/badge/-Create%20PR-blue.svg)](https://github.com/CMSgov/macpro-quickstart-serverless/compare/production...val?quick_pull=1&template=PULL_REQUEST_TEMPLATE.production.md&title=Release%20to%20Production) |
+| branch     | status                                                                                                               | release                                                                                                                                                                                                                                                     |
+| ---------- | -------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| master     | ![master](https://github.com/CMSgov/macpro-platform-doc-conversion/workflows/Deploy/badge.svg?branch=master)         | [![release to master](https://img.shields.io/badge/-Create%20PR-blue.svg)](https://github.com/CMSgov/macpro-platform-doc-conversion/compare?quick_pull=1)                                                                                                   |
+| val        | ![val](https://github.com/CMSgov/macpro-platform-doc-conversion/workflows/Deploy/badge.svg?branch=val)               | [![release to val](https://img.shields.io/badge/-Create%20PR-blue.svg)](https://github.com/CMSgov/macpro-platform-doc-conversion/compare/val...master?quick_pull=1&template=PULL_REQUEST_TEMPLATE.val.md&title=Release%20to%20Val)                          |
+| production | ![production](https://github.com/CMSgov/macpro-platform-doc-conversion/workflows/Deploy/badge.svg?branch=production) | [![release to production](https://img.shields.io/badge/-Create%20PR-blue.svg)](https://github.com/CMSgov/macpro-platform-doc-conversion/compare/production...val?quick_pull=1&template=PULL_REQUEST_TEMPLATE.production.md&title=Release%20to%20Production) |
 
 ## Architecture
 
@@ -21,7 +24,7 @@ Our product is promoted through branches. Master is merged to val to affect a ma
 
 ## Usage
 
-See master build [here](https://github.com/CMSgov/macpro-quickstart-serverless/actions?query=branch%3Amaster)
+See master build [here](https://github.com/CMSgov/macpro-platform-doc-conversion/actions?query=branch%3Amaster)
 
 This application is built and deployed via GitHub Actions.
 
@@ -32,8 +35,6 @@ Want to deploy from your Mac?
 - npm install -g severless
 - brew install yarn
 - sh deploy.sh
-
-
 
 ## Requirements
 
@@ -60,11 +61,13 @@ brew install yarn
 ```
 
 If you'd like to test deploying prior to committing, you can deploy to AWS as follows:
+
 ```
 ./deploy.sh <branch name>
 
 # quick and dirty test where test is a valid html file that is already 508 compliant
 # base64 -i ~/Desktop/test.html -o test_b64.html
+
 # Note output will be a little garbled since we're filtering out special chars
 # To properly validate the output perform these steps in JS or Python and re-encode the output from the API call in base64
 curl -F "data=~@~/Desktop/<some base 64 test_b64.html" --tlsv1.2 https://<output from deploy>.execute-api.us-east-1.amazonaws.com/<branch name>/prince | sed 's/^"//; s/"$//' | base64 -d > ~/Desktop/test.pdf
@@ -73,11 +76,9 @@ curl -F "data=~@~/Desktop/<some base 64 test_b64.html" --tlsv1.2 https://<output
 ./destroy.sh <branch name>
 ```
 
-
-
 ## Contributing / To-Do
 
-See current open [issues](https://github.com/CMSgov/macpro-quickstart-serverless/issues) or check out the [project board](https://github.com/CMSgov/macpro-quickstart-serverless/projects/1).
+See current open [issues](https://github.com/CMSgov/macpro-platorm-doc-conversion/issues) or check out the [project board](https://github.com/CMSgov/macpro-platform-doc-conversion/projects/1).
 
 Please feel free to open new issues for defects or enhancements.
 
@@ -113,6 +114,3 @@ To set the SLACK_WEBHOOK_URL:
 - Create new app : fill in the information
 - Add features and funtionality----Incoming webhooks--- activative incoming webooks--- Add new webhook to workspace.
 - copy new webhook url and set it as SLACK_WEBHOOK_URL in github actions secret.
-
-Please join the macpro-quickstart-serverless slack channel to get all build status and also contribute to any ongoing discussions.
-Join here: https://join.slack.com/t/macproquickst-ugp3045/shared_invite/zt-mdxpbtkk-SrLRi_yzJrXX3uYgvrbjlg
