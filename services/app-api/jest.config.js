@@ -4,4 +4,13 @@ module.exports = {
     "^.+\\.(ts|tsx)?$": "ts-jest",
     "^.+\\.(js|jsx)$": "babel-jest",
   },
+  coverageReporters: [
+    "json",
+    [
+      "lcov",
+      {
+        projectRoot: "../../",
+      },
+    ],
+  ],
 };
