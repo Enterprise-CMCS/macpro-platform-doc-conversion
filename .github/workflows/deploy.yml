@@ -66,7 +66,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: unit_test_results
-          path: ${{github.workspace}/coverage/lcov.info
+          path: ${{github.workspace}}/coverage/lcov.info
       - name: deploy
         run: |
           # When deploying multiple copies of this API to the same AWS Account (not ideal), a prefix helps prevent stepping on each other.
