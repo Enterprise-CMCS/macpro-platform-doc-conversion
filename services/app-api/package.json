@@ -7,17 +7,6 @@
     "coverage": "jest --coverage",
     "test": "jest"
   },
-  "jest": {
-    "coverageReporters": [
-      "json",
-      [
-        "lcov",
-        {
-          "projectRoot": "../"
-        }
-      ]
-    ]
-  },
   "author": "",
   "license": "CC0-1.0",
   "repository": {
