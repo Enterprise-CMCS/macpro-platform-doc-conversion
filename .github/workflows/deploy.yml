@@ -61,12 +61,12 @@ jobs:
         with:
           debug: true
           coverageLocations: |
-            ${{github.workspace}}/services/app-api/coverage/lcov.info:lcov
+            ${{github.workspace}}/services/app-api/lcov.info:lcov
       - name: Store unit test reults
         uses: actions/upload-artifact@v2
         with:
           name: unit_test_results
-          path: ${{github.workspace}}/services/app-api/coverage/lcov.info
+          path: ${{github.workspace}}/services/app-api/lcov.info
       - name: deploy
         run: |
           # When deploying multiple copies of this API to the same AWS Account (not ideal), a prefix helps prevent stepping on each other.
