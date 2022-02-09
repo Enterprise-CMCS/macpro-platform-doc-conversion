@@ -1,0 +1,120 @@
+service: debug
+
+frameworkVersion: "2"
+
+plugins:
+  - serverless-plugin-scripts
+  - serverless-s3-bucket-helper
+  - serverless-iam-helper
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+
+custom:
+  stage: ${opt:stage, self:provider.stage}
+  region: ${opt:region, self:provider.region}
+  iamPath: ${ssm:/configuration/${self:custom.stage}/iam/path~true, ssm:/configuration/default/iam/path~true, "/"}
+  iamPermissionsBoundaryPolicy: ${ssm:/configuration/${self:custom.stage}/iam/permissionsBoundaryPolicy~true, ssm:/configuration/default/iam/permissionsBoundaryPolicy~true, ""}
+  vpcId: ${ssm:/configuration/${self:custom.stage}/vpc/id~true, ssm:/configuration/default/vpc/id~true}
+  dataSubnets:
+    - ${ssm:/configuration/${self:custom.stage}/vpc/subnets/private/a/id~true, ssm:/configuration/default/vpc/subnets/private/a/id~true}
+    - ${ssm:/configuration/${self:custom.stage}/vpc/subnets/private/b/id~true, ssm:/configuration/default/vpc/subnets/private/b/id~true}
+    - ${ssm:/configuration/${self:custom.stage}/vpc/subnets/private/c/id~true, ssm:/configuration/default/vpc/subnets/private/c/id~true}
+  SsmPathPrefix: /macpro-platform-${self:custom.stage}
+  scripts:
+    commands:
+      connect: |
+        instanceId=${cf:debug-${self:custom.stage}.Ec2Id, ""}
+        if [ -z "$instanceId" ]; then
+          echo "No debug instance found for stage ${self:custom.stage}" && exit 1
+        else
+          echo """
+        To connect to the debug instance, run the following command:
+
+        aws ssm start-session --target $instanceId
+          """
+        fi
+
+resources:
+  Conditions:
+    CreatePermissionsBoundary:
+      Fn::Not:
+        - Fn::Equals:
+            - ""
+            - ${self:custom.iamPermissionsBoundaryPolicy}
+  Parameters:
+    pLatestAmiId:
+      Type: AWS::SSM::Parameter::Value<AWS::EC2::Image::Id>
+      Default: /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2
+  Resources:
+    Ec2InstanceRole:
+      Type: AWS::IAM::Role
+      Properties:
+        AssumeRolePolicyDocument:
+          Version: "2012-10-17"
+          Statement:
+            - Effect: Allow
+              Principal:
+                Service:
+                  - ec2.amazonaws.com
+              Action:
+                - sts:AssumeRole
+        Path: ${self:custom.iamPath}
+        PermissionsBoundary: ${self:custom.iamPermissionsBoundaryPolicy}
+        ManagedPolicyArns:
+          - !Sub arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore
+        Policies:
+          - PolicyName: Ec2RolePolicy
+            PolicyDocument:
+              Version: "2012-10-17"
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - ssm:PutParameter
+                    - ssm:GetParameter
+                  Resource: !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter${self:custom.SsmPathPrefix}/*
+    Ec2InstanceProfile:
+      Type: AWS::IAM::InstanceProfile
+      Properties:
+        Path: ${self:custom.iamPath}
+        Roles:
+          - !Ref Ec2InstanceRole
+    Ec2SecurityGroup:
+      Type: AWS::EC2::SecurityGroup
+      Properties:
+        GroupDescription: Security group for the debug instance.
+        VpcId: ${self:custom.vpcId}
+    Ec2:
+      Type: AWS::EC2::Instance
+      Properties:
+        BlockDeviceMappings:
+          - DeviceName: /dev/xvda
+            Ebs:
+              VolumeType: gp2
+              VolumeSize: 10
+              DeleteOnTermination: "false"
+              Encrypted: "true"
+        HibernationOptions:
+          Configured: true
+        IamInstanceProfile: !Ref Ec2InstanceProfile
+        ImageId: !Ref pLatestAmiId
+        InstanceType: t3.micro
+        SecurityGroupIds:
+          - !Ref Ec2SecurityGroup
+        SubnetId: ${self:custom.dataSubnets.0}
+
+    DebugEc2SecurityGroupIngressVPN:
+      Type: AWS::EC2::SecurityGroupIngress
+      Properties:
+        GroupId: !Sub "${Ec2SecurityGroup}"
+        IpProtocol: tcp
+        CidrIp: 10.0.0.0/8
+        ToPort: 22
+        FromPort: 22
+
+  Outputs:
+    Ec2Id:
+      Description: The Id of the EC2 debug instance
+      Value: !Ref Ec2
