@@ -51,6 +51,22 @@ jobs:
       - name: set path
         run: |
           echo "PATH=$(pwd)/node_modules/.bin/:$PATH" >> $GITHUB_ENV
+      - name: run unit tests
+        run: ./test-unit.sh {{ env.STAGE_PREFIX }}{{ env.branch_name }}
+      - name: publish test coverage to code climate
+        if: env.CODE_CLIMATE_ID != ''
+        uses: paambaati/codeclimate-action@v2.7.5
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_ID }}
+        with:
+          debug: true
+          coverageLocations: |
+            ${{github.workspace}}/services/app-api/coverage/lcov.info:lcov
+      - name: Store unit test reults
+        uses: actions/upload-artifact@v2
+        with:
+          name: unit_test_results
+          path: ${{github.workspace}}/services/app-api/coverage/lcov.info
       - name: deploy
         run: |
           # When deploying multiple copies of this API to the same AWS Account (not ideal), a prefix helps prevent stepping on each other.
