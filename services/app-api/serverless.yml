@@ -44,6 +44,7 @@ provider:
   name: aws
   runtime: nodejs12.x
   region: us-east-1
+  endpointType: PRIVATE
   logs:
     restApi: true
   iam:
@@ -114,7 +115,7 @@ resources:
               SampledRequestsEnabled: true
               CloudWatchMetricsEnabled: true
               MetricName: WafWebAcl
-        Scope: PRIVATE
+        Scope: REGIONAL
         VisibilityConfig:
           CloudWatchMetricsEnabled: true
           SampledRequestsEnabled: true
