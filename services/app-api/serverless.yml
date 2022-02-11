@@ -45,6 +45,16 @@ provider:
   runtime: nodejs12.x
   region: us-east-1
   endpointType: PRIVATE
+  resourcePolicy:
+      - Effect: Allow
+        Principal: '*'
+        Action: execute-api:Invoke
+        Resource:
+          - execute-api:/*/*/*
+        Condition:
+          StringEquals:
+            aws:SourceVpce:
+              - "vpce-0c1b38793a77bedfc"
   logs:
     restApi: true
   iam:
