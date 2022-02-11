@@ -3538,7 +3538,7 @@ serverless-stack-termination-protection@^1.0.4:
   resolved "https://registry.yarnpkg.com/serverless-stack-termination-protection/-/serverless-stack-termination-protection-1.0.4.tgz#e0430108cfc8f4d72a63138ef5781c6fe9707868"
   integrity sha512-2uOF6/t90VXpWq8ZbWgEXMiYXA+9ZKsgm8or5jJLQYnm0Sbu2z7/EK2/ACwH4uaErFOdprI0tO9H8STdKK4TFQ==
 
-serverless@^2.43.1:
+serverless@^2.72.2:
   version "2.72.2"
   resolved "https://registry.yarnpkg.com/serverless/-/serverless-2.72.2.tgz#bb09965818cfa0683018900717c393a464a1ee5d"
   integrity sha512-xlxaWyq4b58DIX3prwIikBmXj0z4R+YI9zcDPYgQc78mKJ0qTgCK7BMoy6dlVuHXnfhBkhT3uT/EhFvjKIdk6g==
