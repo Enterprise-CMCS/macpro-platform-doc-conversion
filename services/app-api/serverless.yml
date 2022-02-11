@@ -7,7 +7,6 @@ package:
   individually: true
 
 plugins:
-  - serverless-bundle
   - serverless-plugin-warmup
   - serverless-associate-waf
   - serverless-stack-termination-protection
