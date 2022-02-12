@@ -54,7 +54,7 @@ provider:
         Condition:
           StringEquals:
             aws:SourceVpce:
-              - "vpce-0c1b38793a77bedfc"
+              - "vpce-04b4c3486714b1a0d2"
   logs:
     restApi: true
   iam:
