@@ -42,6 +42,7 @@ provider:
   runtime: nodejs12.x
   region: us-east-1
   endpointType: PRIVATE
+  VPCEndpointsIds: "vpce-04b4c3486714b1a0d2"
   resourcePolicy:
       - Effect: Allow
         Principal: '*'
