@@ -24,7 +24,10 @@ custom:
       - master
       - val
       - production
-
+  webAclName: ${self:service}-${self:custom.stage}-webacl
+  associateWaf:
+    name: ${self:custom.webAclName}
+    version: V2
   warmup:
     default:
       enabled: true
@@ -41,18 +44,6 @@ provider:
   name: aws
   runtime: nodejs12.x
   region: us-east-1
-  endpointType: PRIVATE
-  VPCEndpointsIds: "vpce-04b4c3486714b1a0d2"
-  resourcePolicy:
-      - Effect: Allow
-        Principal: '*'
-        Action: execute-api:Invoke
-        Resource:
-          - execute-api:/*/*/*
-        Condition:
-          StringEquals:
-            aws:SourceVpce:
-              - "vpce-04b4c3486714b1a0d2"
   logs:
     restApi: true
   iam:
@@ -82,7 +73,52 @@ functions:
           # authorizer: aws_iam
 
 resources:
-
+  Resources:
+    GatewayResponseDefault4XX:
+      Type: "AWS::ApiGateway::GatewayResponse"
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+        ResponseType: DEFAULT_4XX
+        RestApiId: !Ref ApiGatewayRestApi
+    GatewayResponseDefault5XX:
+      Type: "AWS::ApiGateway::GatewayResponse"
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+          gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+        ResponseType: DEFAULT_5XX
+        RestApiId: !Ref ApiGatewayRestApi
+    ApiGwWebAcl:
+      Type: AWS::WAFv2::WebACL
+      Properties:
+        Name: ${self:custom.webAclName}
+        DefaultAction:
+          Block: {}
+        Rules:
+          - Action:
+              Allow: {}
+            Name: ${self:custom.webAclName}-allow-usa-plus-territories
+            Priority: 0
+            Statement:
+              GeoMatchStatement:
+                CountryCodes:
+                  - GU # Guam
+                  - PR # Puerto Rico
+                  - US # USA
+                  - UM # US Minor Outlying Islands
+                  - VI # US Virgin Islands
+                  - MP # Northern Mariana Islands
+            VisibilityConfig:
+              SampledRequestsEnabled: true
+              CloudWatchMetricsEnabled: true
+              MetricName: WafWebAcl
+        Scope: REGIONAL
+        VisibilityConfig:
+          CloudWatchMetricsEnabled: true
+          SampledRequestsEnabled: true
+          MetricName: ${self:custom.stage}-webacl
   Outputs:
     ApiGatewayRestApiName:
       Value: !Ref ApiGatewayRestApi
