@@ -18,6 +18,7 @@
     "@types/node": "^14.14.6",
     "aws-sdk": "^2.923.0",
     "serverless": "^2.72.2",
+    "serverless-bundle": "^4.3.1",
     "serverless-iam-helper": "CMSgov/serverless-iam-helper",
     "serverless-idempotency-helper": "CMSgov/serverless-idempotency-helper",
     "serverless-online": "CMSgov/serverless-online",
