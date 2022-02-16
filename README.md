@@ -1,4 +1,4 @@
-# macpro-platform-doc-conversion ![Build](https://github.com/CMSgov/macpro-platform-doc-conversion/workflows/Deploy/badge.svg?branch=master) [![latest release](https://img.shields.io/github/release/cmsgov/macpro-platform-doc-conversion.svg)](https://github.com/cmsgov/macpro-platform-doc-conversion/releases/latest) [![Maintainability](https://api.codeclimate.com/v1/badges/c6b3d112f68f9be7f95a/maintainability)](https://codeclimate.com/github/CMSgov/macpro-platform-doc-conversion/maintainability) [![CodeQL](https://github.com/CMSgov/macpro-platform-doc-conversion/actions/workflows/codeql-analysis.yml/badge.svg?branch=master)](https://github.com/CMSgov/macpro-platform-doc-conversion/actions/workflows/codeql-analysis.yml) [![Dependabot](https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot)](https://dependabot.com/) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Test Coverage](https://api.codeclimate.com/v1/badges/c6b3d112f68f9be7f95a/test_coverage)](https://codeclimate.com/github/CMSgov/macpro-platform-doc-conversion/test_coverage)
+# macpro-platform-doc-conversion ![Build](https://github.com/CMSgov/macpro-platform-doc-conversion/workflows/Deploy/badge.svg?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/c6b3d112f68f9be7f95a/maintainability)](https://codeclimate.com/github/CMSgov/macpro-platform-doc-conversion/maintainability) [![CodeQL](https://github.com/CMSgov/macpro-platform-doc-conversion/actions/workflows/codeql-analysis.yml/badge.svg?branch=master)](https://github.com/CMSgov/macpro-platform-doc-conversion/actions/workflows/codeql-analysis.yml) [![Dependabot](https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot)](https://dependabot.com/) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Test Coverage](https://api.codeclimate.com/v1/badges/c6b3d112f68f9be7f95a/test_coverage)](https://codeclimate.com/github/CMSgov/macpro-platform-doc-conversion/test_coverage)
 
 MACPRO Platform document conversion APIs.
 
@@ -32,7 +32,6 @@ Want to deploy from your Mac?
 
 - Create an AWS account
 - Install/configure the AWS CLI
-- npm install -g severless
 - brew install yarn
 - sh deploy.sh
 
@@ -65,12 +64,14 @@ If you'd like to test deploying prior to committing, you can deploy to AWS as fo
 ```
 ./deploy.sh <branch name>
 
-# quick and dirty test where test is a valid html file that is already 508 compliant
+# Quick and dirty test where "test.hmtl" is a valid html file that is already 508 compliant.
+# First we base64 encode the html:
 # base64 -i ~/Desktop/test.html -o test_b64.html
 
 # Note output will be a little garbled since we're filtering out special chars
-# To properly validate the output perform these steps in JS or Python and re-encode the output from the API call in base64
-curl -F "data=~@~/Desktop/<some base 64 test_b64.html" --tlsv1.2 https://<output from deploy>.execute-api.us-east-1.amazonaws.com/<branch name>/prince | sed 's/^"//; s/"$//' | base64 -d > ~/Desktop/test.pdf
+# To properly validate the output perform these steps in JS or Python and decode the API response from base64
+# API ID will be output from the deploy
+curl -F "data=~@~/Desktop/test_b64.html" --tlsv1.2 https://<API ID>.execute-api.us-east-1.amazonaws.com/<branch name>/prince | sed 's/^"//; s/"$//' | base64 -d > ~/Desktop/test.pdf
 
 # to clean up
 ./destroy.sh <branch name>
@@ -113,4 +114,4 @@ To set the SLACK_WEBHOOK_URL:
 - Go to https://api.slack.com/apps
 - Create new app : fill in the information
 - Add features and funtionality----Incoming webhooks--- activative incoming webooks--- Add new webhook to workspace.
-- copy new webhook url and set it as SLACK_WEBHOOK_URL in github actions secret.
+- copy new webhook url and set it as SLACK_WEBHOOK_URL in Github Actions Secrets.
