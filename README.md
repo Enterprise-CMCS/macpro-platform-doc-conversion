@@ -80,6 +80,7 @@ curl -F "data=~@~/Desktop/test_b64.html" --tlsv1.2 https://<API ID>.execute-api.
 ## Example Calling the API
 
 To run the Python example calling your deployed API:
+
 ```
 # Setting up a Python virtualenv is beyond the scope of this guide. 
 # Below assumes Python 3.8 and a pyenv virtual environment dedicated for calling this API
