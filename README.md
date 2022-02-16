@@ -86,7 +86,7 @@ To run the Python example calling your deployed API:
 # Below assumes Python 3.8 and a pyenv virtual environment dedicated for calling this API
 pyenv activate my-prince-virtual-env
 pip install -r examples/python/requirements.txt
-python examples/python/call_prince.py https://abc123>.execute-api.us-east-1.amazonaws.com/master/prince ~/Desktop
+python examples/python/call_prince.py https://abc123.execute-api.us-east-1.amazonaws.com/master/prince ~/Desktop
 508 html being converted to pdf:
 
 <html lang="en">
