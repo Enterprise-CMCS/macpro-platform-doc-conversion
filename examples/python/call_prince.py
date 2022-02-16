@@ -13,7 +13,7 @@ stage = api_endpoint.split('/')[-2]
 
 
 # latin-1 is required or we won't be able to decode this properly later
-html_data = open("../test_data/test.html", "r", encoding="latin-1").read()
+html_data = open("examples/test_data/test.html", "r", encoding="latin-1").read()
 
 # str -> bytes
 input_bytes = html_data.encode()
