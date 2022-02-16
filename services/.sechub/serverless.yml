@@ -6,7 +6,6 @@ package:
   individually: true
 
 plugins:
-  - serverless-bundle
   - serverless-stack-termination-protection
   - serverless-idempotency-helper
   - serverless-iam-helper
