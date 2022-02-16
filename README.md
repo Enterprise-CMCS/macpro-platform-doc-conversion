@@ -77,6 +77,28 @@ curl -F "data=~@~/Desktop/test_b64.html" --tlsv1.2 https://<API ID>.execute-api.
 ./destroy.sh <branch name>
 ```
 
+## Example Calling the API
+
+To run the Python example calling your deployed API:
+```
+# Setting up a Python virtualenv is beyond the scope of this guide. 
+# Below assumes Python 3.8 and a pyenv virtual environment dedicated for calling this API
+pyenv activate my-prince-virtual-env
+pip install -r examples/python/requirements.txt
+python examples/python/call_prince.py https://abc123>.execute-api.us-east-1.amazonaws.com/master/prince ~/Desktop
+508 html being converted to pdf:
+
+<html lang="en">
+        <head>
+...
+        </body>
+      </html>
+
+sending request to https://abc123.execute-api.us-east-1.amazonaws.com/master/prince:
+<bound method Response.json of <Response [200]>>
+508 PDF written to: /Users/jeffreysobchak/Desktop/prince-master.pdf
+```
+
 ## Contributing / To-Do
 
 See current open [issues](https://github.com/CMSgov/macpro-platorm-doc-conversion/issues) or check out the [project board](https://github.com/CMSgov/macpro-platform-doc-conversion/projects/1).
