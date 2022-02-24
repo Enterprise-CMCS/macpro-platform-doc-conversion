@@ -56,7 +56,8 @@ provider:
   apiGateway:
     resourcePolicy:
       - Effect: Allow
-        Principal: "AWS": "arn:aws:iam::635052997545:root"
+        Principal: 
+          AWS: "arn:aws:iam::635052997545:root"
         Action: execute-api:Invoke
         Resource:
           - execute-api:/*/*/*/*/*/*
