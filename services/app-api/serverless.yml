@@ -52,6 +52,16 @@ provider:
       path: ${ssm:/configuration/${self:custom.stage}/iam/path~true, ssm:/configuration/default/iam/path~true, "/"}
       permissionsBoundary: ${ssm:/configuration/${self:custom.stage}/iam/permissionsBoundaryPolicy~true, ssm:/configuration/default/iam/permissionsBoundaryPolicy~true, ""}
 
+	
+  apiGateway:
+    resourcePolicy:
+      - Effect: Allow
+        Principal: "AWS": "arn:aws:iam::635052997545:root"
+        Action: execute-api:Invoke
+        Resource:
+          - execute-api:/*/*/*/*/*/*
+
+
 layers:
   prince:
     name: prince-${self:custom.stage}
@@ -71,7 +81,7 @@ functions:
           path: prince
           method: post
           cors: true
-          # authorizer: aws_iam
+          authorizer: aws_iam
 
 resources:
   Resources:
