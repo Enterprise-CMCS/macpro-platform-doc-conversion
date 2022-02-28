@@ -57,7 +57,7 @@ provider:
     resourcePolicy:
       - Effect: Allow
         Principal: 
-          AWS: "arn:aws:iam::635052997545:root"
+          AWS: !Split [",", ${ssm:/configuration/default/macpro-platform-doc-conversion/iam/invoke-roles/}]
         Action: execute-api:Invoke
         Resource:
           - execute-api:/*/*/*/*/*/*
