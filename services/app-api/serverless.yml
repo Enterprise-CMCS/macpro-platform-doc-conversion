@@ -58,7 +58,7 @@ provider:
     resourcePolicy:
       - Effect: Allow
         Principal: 
-          AWS: !Split [",", !Ref self:cutom.invokeRoles]
+          AWS: !Ref self:cutom.invokeRoles
         Action: execute-api:Invoke
         Resource:
           - execute-api:/*/*/*/*/*/*
