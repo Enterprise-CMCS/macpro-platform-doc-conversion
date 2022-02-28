@@ -58,8 +58,7 @@ provider:
     resourcePolicy:
       - Effect: Allow
         Principal: 
-          AWS: 
-            - ${self:custom.invokeRoles}
+          AWS: ${self:custom.invokeRoles}
         Action: execute-api:Invoke
         Resource:
           - execute-api:/*/*/*/*/*/*
