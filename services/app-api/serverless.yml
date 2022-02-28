@@ -20,6 +20,7 @@ plugins:
 custom:
   stage: ${opt:stage, self:provider.stage}
   region: ${opt:region, self:provider.region}
+  invokeRoles: ${ssm:/configuration/default/macpro-platform-doc-conversion/iam/invoke-roles/}
   serverlessTerminationProtection:
     stages:
       - master
@@ -57,7 +58,7 @@ provider:
     resourcePolicy:
       - Effect: Allow
         Principal: 
-          AWS: !Split [",", ${ssm:/configuration/default/macpro-platform-doc-conversion/iam/invoke-roles/}]
+          AWS: !Split [",", !Ref invokeRoles]
         Action: execute-api:Invoke
         Resource:
           - execute-api:/*/*/*/*/*/*
