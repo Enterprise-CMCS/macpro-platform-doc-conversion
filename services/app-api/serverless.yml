@@ -20,7 +20,8 @@ plugins:
 custom:
   stage: ${opt:stage, self:provider.stage}
   region: ${opt:region, self:provider.region}
-  invokeRoles: ${ssm:/configuration/default/macpro-platform-doc-conversion/iam/invoke-roles~split}
+  invokeRoles: ${ssm:/configuration/${self:custom.stage}/macpro-platform-doc-conversion/iam/invoke-arns~split, 
+                 ssm:/configuration/default/macpro-platform-doc-conversion/iam/invoke-arns~split}
   serverlessTerminationProtection:
     stages:
       - master
