@@ -51,7 +51,7 @@ provider:
     restApi: true
   iam:
     role:
-      path: ${SSM:/configuration/${self:custom.stage}/iam/path~true, SSM:/configuration/default/iam/path~true, "/"}
+      path: ${SSM:/configuration/${self:custom.stage}/iam/path, SSM:/configuration/default/iam/path, "/"}
       permissionsBoundary: ${SSM:/configuration/${self:custom.stage}/iam/permissionsBoundaryPolicy~true, SSM:/configuration/default/iam/permissionsBoundaryPolicy~true, ""}
 
 	
