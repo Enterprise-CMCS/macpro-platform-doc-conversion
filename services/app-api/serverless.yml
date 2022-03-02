@@ -36,8 +36,8 @@ custom:
       enabled: true
       prewarm: true
       events:
-        - schedule: rate(${SSM:/configuration/${self:custom.stage}/warmup/schedule~true, SSM:/configuration/default/warmup/schedule~true, "4 minutes"})
-      concurrency: ${SSM:/configuration/${self:custom.stage}/warmup/concurrency~true, SSM:/configuration/default/warmup/concurrency~true, 5}
+        - schedule: rate(${ssm:/configuration/${self:custom.stage}/warmup/schedule, ssm:/configuration/default/warmup/schedule, "4 minutes"})
+      concurrency: ${ssm:/configuration/${self:custom.stage}/warmup/concurrency, ssm:/configuration/default/warmup/concurrency, 5}
   scripts:
     hooks:
       package:initialize: |
@@ -51,8 +51,8 @@ provider:
     restApi: true
   iam:
     role:
-      path: ${SSM:/configuration/${self:custom.stage}/iam/path, SSM:/configuration/default/iam/path, "/"}
-      permissionsBoundary: ${SSM:/configuration/${self:custom.stage}/iam/permissionsBoundaryPolicy~true, SSM:/configuration/default/iam/permissionsBoundaryPolicy~true, ""}
+      path: ${ssm:/configuration/${self:custom.stage}/iam/path, ssm:/configuration/default/iam/path, "/"}
+      permissionsBoundary: ${ssm:/configuration/${self:custom.stage}/iam/permissionsBoundaryPolicy, ssm:/configuration/default/iam/permissionsBoundaryPolicy, ""}
 
 	
   apiGateway:
