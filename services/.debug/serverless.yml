@@ -115,7 +115,9 @@ resources:
             yum clean metadata
             yum install python38
             curl -O https://bootstrap.pypa.io/get-pip.py
-            yum install git
+            yum install git -y
+            sudo su - ssm-user
+            cd ~
             git clone https://github.com/CMSgov/macpro-platform-doc-conversion
 
     DebugEc2SecurityGroupIngressVPN:
