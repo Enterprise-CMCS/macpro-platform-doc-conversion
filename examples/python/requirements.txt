@@ -1,4 +1,4 @@
 requests
 botocore
-aws_requests_auth
+aws-requests-auth
 boto3
