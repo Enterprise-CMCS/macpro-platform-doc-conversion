@@ -54,7 +54,7 @@ provider:
       path: ${ssm:/configuration/${self:custom.stage}/iam/path, ssm:/configuration/default/iam/path, "/"}
       permissionsBoundary: ${ssm:/configuration/${self:custom.stage}/iam/permissionsBoundaryPolicy, ssm:/configuration/default/iam/permissionsBoundaryPolicy, ""}
 
-	
+  endpointType: regional	
   apiGateway:
     resourcePolicy:
       - Effect: Allow
@@ -62,7 +62,7 @@ provider:
           AWS: ${self:custom.invokeARNs}
         Action: execute-api:Invoke
         Resource:
-          - execute-api:/*/*/*/*/*/*
+          - execute-api:/*
 
 
 layers:
