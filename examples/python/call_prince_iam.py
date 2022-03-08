@@ -1,7 +1,12 @@
+# This script assumes an API Gateway endpoint secured with an IAM resource policy
 import requests
 import base64
 import json
 import argparse
+
+# note that this line will fail if you do not have botocore installed
+# botocore installation instructions available here:
+# https://boto3.readthedocs.io/en/latest/guide/quickstart.html#installation
 from aws_requests_auth.boto_utils import BotoAWSRequestsAuth
 
 
@@ -12,15 +17,24 @@ args = parser.parse_args()
 api_endpoint = args.api_endpoint
 output_location = args.output_location
 stage = api_endpoint.split('/')[-2]
+
+# execute-api.<aws region>.amazonaws.com
 aws_host = api_endpoint.split('/')[-3]
 
 
 
+# Using aws-request-auth to AWS with Amazon's v4 signing process.
+# aws-request-auth: https://github.com/DavidMuller/aws-requests-auth
+# https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html
+# Alternative packages or homemade is also possible
 
+# We are using botocore here to dynamically pull AWS creds from any number of places
+# Env vars, profile, IAM role, etc. Thus we can run this locally, in ec2, ECS, etc.
 auth = BotoAWSRequestsAuth(
                            aws_host=aws_host,
                            aws_region='us-east-1',
                            aws_service='execute-api')
+
 
 # latin-1 is required or we won't be able to decode this properly later
 html_data = open("examples/test_data/test.html", "r", encoding="latin-1").read()
@@ -36,13 +50,14 @@ print(f"508 html being converted to pdf:\n\n\n{html_data}\n\n\n")
 print(f"sending request to {api_endpoint}:")
   
 
-# Sending post request and saving response as response object 
+# Sending post request and saving response as response object
+# Pass v4 signed request via auth object
 r = requests.post(url = api_endpoint, data = b64_data, auth=auth)
 
 
 # resp is json with base64 payload
 api_resp = r.json()
-print(r.content)
+# print(r.content)
 print(r.json)
 
 # base64 -> bytes
