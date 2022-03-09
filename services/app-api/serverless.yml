@@ -44,7 +44,7 @@ custom:
         curl -L --output lambda_layer.zip https://www.princexml.com/download/prince-14.2-aws-lambda.zip && zip lambda_layer.zip etc/fontconfig/fonts.conf
         mkdir -p prince-engine/license && echo '${self:custom.princeLicense}' > prince-engine/license/license.dat
         [ -s prince-engine/license/license.dat ]
-        [ $? == 0 ] && zip lambda_layer.zip prince-engine/license/license.dat
+        [ "$?" -eq "0" ] && zip lambda_layer.zip prince-engine/license/license.dat
 provider:
   name: aws
   runtime: nodejs12.x
