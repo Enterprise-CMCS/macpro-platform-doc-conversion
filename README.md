@@ -80,7 +80,7 @@ curl -F "data=~@~/Desktop/test_b64.html" --tlsv1.2 https://<API ID>.execute-api.
 ## Invocation example #1 (IAM Off)
 
 We are starting with a simplified example, where no authorization is required.
-To disable authorization, comment out `authorizer: aws_iam` in the `services/app-api/serverless.yml`.
+To disable authorization, comment out `authorizer: aws_iam` in the `services/app-api/serverless.yml` as well as removing the `resourcePolicy` block.
 To run the Python example calling your deployed API:
 
 ```
