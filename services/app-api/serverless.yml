@@ -26,6 +26,7 @@ custom:
       - val
       - production
   webAclName: ${self:service}-${self:custom.stage}-webacl
+  princeLicense: ${ssm:/configuration/${self:custom.stage}/prince/license~true, ssm:/configuration/default/prince/license~true, ""}
   associateWaf:
     name: ${self:custom.webAclName}
     version: V2
@@ -66,6 +67,8 @@ functions:
     maximumRetryAttempts: 0
     layers:
       - !Ref PrinceLambdaLayer
+    environment:
+      LICENSE_KEY: ${self:custom.prince_license}
     events:
       - http:
           path: prince
