@@ -26,7 +26,7 @@ custom:
       - val
       - production
   webAclName: ${self:service}-${self:custom.stage}-webacl
-  princeLicense: ${ssm:/configuration/${self:custom.stage}/prince/license~true, ssm:/configuration/default/prince/license~true}
+  princeLicense: ${ssm:/configuration/${self:custom.stage}/prince/license~true, ssm:/configuration/default/prince/license~true, ""}
   associateWaf:
     name: ${self:custom.webAclName}
     version: V2
@@ -43,8 +43,7 @@ custom:
         set -e
         curl -L --output lambda_layer.zip https://www.princexml.com/download/prince-14.2-aws-lambda.zip && zip lambda_layer.zip etc/fontconfig/fonts.conf
         mkdir -p prince-engine/license && echo '${self:custom.princeLicense}' > prince-engine/license/license.dat
-        [ -s prince-engine/license/license.dat ]
-        [ "$?" -eq "0" ] && zip lambda_layer.zip prince-engine/license/license.dat
+        [ "$(wc -c prince-engine/license/license.dat | cut -f1 -d ' ')" -gt "1" ] && zip lambda_layer.zip prince-engine/license/license.dat
 provider:
   name: aws
   runtime: nodejs12.x
