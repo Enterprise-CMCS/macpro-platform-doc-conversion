@@ -22,6 +22,7 @@ The following values are used to configure the deployment of this service (see b
 | .../warmup/schedule | N | Y | Y | This is a set schedule for warming up the lambda function.|
 | .../warmup/concurrency | N | Y | Y | The number of lambda functions to invoke on warmup. The higher this number the warm lambda containers are ready to go.|
 |.../macpro-platform-doc-conversion/iam/invoke-arns | N | Y | Y | StringList of ARNs that get added to the resource policy as allowed invokers. Must be without quotes, no spaces, comma seperated. IAM roles, users, and accounts are all valid here. Defaults to the account this code is deployed in. Works for cross-account.
+| .../prince/license | Y | Y | Y | Specifies the license to be applied to PrinceXML. The non-commercial use license can be extracted from [PrinceXML's zip archive](https://www.princexml.com/download/prince-14.2-aws-lambda.zip) at the path `prince-engine/license/license.dat`.|
 
 This project uses [AWS Systems Manager Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html), often referred to as simply SSM, to inject environment specific, project specific, and/or sensitive information into the deployment.
 In short, SSM is an AWS service that allows users to store (optionally) encrypted strings in a directory like hierarchy. For example, "/my/first/ssm/param" is a valid path for a parameter. Access to this service and even individual paramters is granted via AWS IAM.
