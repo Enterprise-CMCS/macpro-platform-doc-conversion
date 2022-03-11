@@ -75,6 +75,10 @@ resources:
                     - ssm:PutParameter
                     - ssm:GetParameter
                   Resource: !Sub arn:aws:ssm:${AWS::Region}:${AWS::AccountId}:parameter${self:custom.SsmPathPrefix}/*
+                - Effect: Allow
+                  Action:
+                    - execute-api:*
+                  Resource: "*"
     Ec2InstanceProfile:
       Type: AWS::IAM::InstanceProfile
       Properties:
@@ -104,6 +108,17 @@ resources:
         SecurityGroupIds:
           - !Ref Ec2SecurityGroup
         SubnetId: ${self:custom.dataSubnets.0}
+        UserData:
+          Fn::Base64: |
+            #!/bin/bash
+            amazon-linux-extras enable python3.8
+            yum clean metadata
+            yum install python38
+            curl -O https://bootstrap.pypa.io/get-pip.py
+            yum install git -y
+            sudo su - ssm-user
+            cd ~
+            git clone https://github.com/CMSgov/macpro-platform-doc-conversion
 
     DebugEc2SecurityGroupIngressVPN:
       Type: AWS::EC2::SecurityGroupIngress
