@@ -1,15 +1,19 @@
 # app-api
 
 ## IAM Considerations with API Gateway
+
 https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-cloudfront-distribution/
->By default, CloudFront doesn't forward incoming Authorization headers to the origin (for this use case, API Gateway). If you're using IAM authentication for your >API or custom domain names for your distribution, you must do one of the following..."
+
+> By default, CloudFront doesn't forward incoming Authorization headers to the origin (for this use case, API Gateway). If you're using IAM authentication for your >API or custom domain names for your distribution, you must do one of the following..."
 
 ### Other Important Points
+
 1. Even though you can apply a resource policy to a public api without IAM on, only non-IAM conditions are evaluated without turning on IAM. IAM identity conditions are still applied on the invoking side
 2. API Gateway edge endpoints don’t forward auth headers, but if they were previously regional endpoints and you had a successful call against it, that auth can be cached for a period of time and succeed against the point when it is switched to edge.
-3. There is some delay in switching between edge and regional endpoints in the background, even when the operation succeeds. This manifests itself if you try to reverse the switch and go back the opposite way too fast.  IE regional -> edge -> regional
+3. There is some delay in switching between edge and regional endpoints in the background, even when the operation succeeds. This manifests itself if you try to reverse the switch and go back the opposite way too fast. IE regional -> edge -> regional
 
 ### TL;DR | Takeway
+
 when using IAM authentication and a resource policy while allowing cross-account invokers, the endpoint should be REGIONAL, and IAM authentication needs turned on for the API Gateway method.
 
 ## Configuration - AWS Systems Manager Parameter Store (SSM)

@@ -103,30 +103,31 @@ sending request to https://abc123.execute-api.us-east-1.amazonaws.com/master/pri
 ```
 
 ## Invocation example #2 (IAM Authorization) in ec2
+
 By default authorization is handled by IAM via a resource policy on the API Gateway. For more details, consult the readme in `services/app-api`.
 
 The `call_prince_iam.py` script is using the [AWS V4 signing process](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) to sign the request that is submitted to the API. This is a requirement when using IAM authentication. This is a complicated process, and packages exist to handle this for you. The example uses `BotoAWSRequestsAuth` for Python.
 
 For this example, the IAM role attached to the ec2 instance is:
+
 ```
 arn:aws:iam::<AWS ACCOUNT NO>:role/delegatedadmin/developer/This-Is-An-IAM-Role-for-EC2
 ```
 
-The above IAM role would need to be placed in the SSM StringList parameter for allowed ARNs that can invoke the API, 
+The above IAM role would need to be placed in the SSM StringList parameter for allowed ARNs that can invoke the API,
 ensuring the IAM role gets added to the API Gateway resource policy:
+
 ```
 /configuration/my-branch-name/macpro-platform-doc-conversion/iam/invoke-arns
 ```
 
-Additionally, the IAM role needs `"execute-api:Invoke"` on `"Resource": "arn:aws:execute-api:us-east-1:*`. 
+Additionally, the IAM role needs `"execute-api:Invoke"` on `"Resource": "arn:aws:execute-api:us-east-1:*`.
 
-[IAM authentication and resource policy](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-authorization-flow.html#apigateway-authorization-flow-iam) covers the why in extensive detail. TL;DR both the identity policy (invoker) and resource policy (API Gateway) matter. 
-
-
+[IAM authentication and resource policy](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-authorization-flow.html#apigateway-authorization-flow-iam) covers the why in extensive detail. TL;DR both the identity policy (invoker) and resource policy (API Gateway) matter.
 
 ```
 # Connect to ec2 instance via SSM
-# Below assumes python3 and pip3 installed already or .debug ec2 instance being used 
+# Below assumes python3 and pip3 installed already or .debug ec2 instance being used
 sh-4.2$ cd ~
 sh-4.2$ git clone https://github.com/CMSgov/macpro-platform-doc-conversion
 sh-4.2$ cd macpro-platform-doc-conversion
@@ -166,14 +167,16 @@ sh-4.2$
 ```
 
 ## Invocation example #3 (IAM Authorization) in a Lambda Function
+
 In this example, all permission requirements and SSM setup for the invoker remain the same as example #2.
-What changes is the invocation code. For Lambda will we work with `examples/python/lambda_handler.py`. 
+What changes is the invocation code. For Lambda will we work with `examples/python/lambda_handler.py`.
 
 This example differs from the previous in that it reads an html input file from an S3 bucket and writes it to an S3 bucket, so the IAM role for the Lambda function would also need permissions for this.
 
-[AWS's instructions for packaging and deploying a Python Lambda function](https://docs.aws.amazon.com/lambda/latest/dg/python-package.html) can be used to deploy this example handler.  The dependencies that need included are in `examples/python/requirements.txt`
+[AWS's instructions for packaging and deploying a Python Lambda function](https://docs.aws.amazon.com/lambda/latest/dg/python-package.html) can be used to deploy this example handler. The dependencies that need included are in `examples/python/requirements.txt`
 
 Example test input lambda function (can be tested in AWS console):
+
 ```
 {
   "api_endpoint": "https://abc123.execute-api.us-east-1.amazonaws.com/my-branch-name/prince",
@@ -182,8 +185,6 @@ Example test input lambda function (can be tested in AWS console):
   "output_location": "my-test-bucket-name"
 }
 ```
-
-
 
 ## Contributing / To-Do
 
