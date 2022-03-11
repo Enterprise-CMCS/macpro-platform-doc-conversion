@@ -2,6 +2,7 @@
 service: app-api
 
 frameworkVersion: "2"
+variablesResolutionMode: "20210326"
 
 package:
   individually: true
@@ -20,13 +21,14 @@ plugins:
 custom:
   stage: ${opt:stage, self:provider.stage}
   region: ${opt:region, self:provider.region}
+  invokeARNs: ${ssm:/configuration/${self:custom.stage}/macpro-platform-doc-conversion/iam/invoke-arns, ssm:/configuration/default/macpro-platform-doc-conversion/iam/invoke-arns, "arn:aws:iam::${aws:accountId}:root"}
   serverlessTerminationProtection:
     stages:
       - master
       - val
       - production
   webAclName: ${self:service}-${self:custom.stage}-webacl
-  princeLicense: ${ssm:/configuration/${self:custom.stage}/prince/license~true, ssm:/configuration/default/prince/license~true, ""}
+  princeLicense: ${ssm:/configuration/${self:custom.stage}/prince/license, ssm:/configuration/default/prince/license, ""}
   associateWaf:
     name: ${self:custom.webAclName}
     version: V2
@@ -35,8 +37,8 @@ custom:
       enabled: true
       prewarm: true
       events:
-        - schedule: rate(${ssm:/configuration/${self:custom.stage}/warmup/schedule~true, ssm:/configuration/default/warmup/schedule~true, "4 minutes"})
-      concurrency: ${ssm:/configuration/${self:custom.stage}/warmup/concurrency~true, ssm:/configuration/default/warmup/concurrency~true, 5}
+        - schedule: rate(${ssm:/configuration/${self:custom.stage}/warmup/schedule, ssm:/configuration/default/warmup/schedule, "4 minutes"})
+      concurrency: ${ssm:/configuration/${self:custom.stage}/warmup/concurrency, ssm:/configuration/default/warmup/concurrency, 5}
   scripts:
     hooks:
       package:initialize: |
@@ -53,8 +55,18 @@ provider:
     restApi: true
   iam:
     role:
-      path: ${ssm:/configuration/${self:custom.stage}/iam/path~true, ssm:/configuration/default/iam/path~true, "/"}
-      permissionsBoundary: ${ssm:/configuration/${self:custom.stage}/iam/permissionsBoundaryPolicy~true, ssm:/configuration/default/iam/permissionsBoundaryPolicy~true, ""}
+      path: ${ssm:/configuration/${self:custom.stage}/iam/path, ssm:/configuration/default/iam/path, "/"}
+      permissionsBoundary: ${ssm:/configuration/${self:custom.stage}/iam/permissionsBoundaryPolicy, ssm:/configuration/default/iam/permissionsBoundaryPolicy, ""}
+
+  endpointType: regional
+  apiGateway:
+    resourcePolicy:
+      - Effect: Allow
+        Principal:
+          AWS: ${self:custom.invokeARNs}
+        Action: execute-api:Invoke
+        Resource:
+          - execute-api:/*
 
 layers:
   prince:
@@ -75,7 +87,7 @@ functions:
           path: prince
           method: post
           cors: true
-          # authorizer: aws_iam
+          authorizer: aws_iam
 
 resources:
   Resources:

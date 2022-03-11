@@ -1,5 +1,21 @@
 # app-api
 
+## IAM Considerations with API Gateway
+
+https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-cloudfront-distribution/
+
+> By default, CloudFront doesn't forward incoming Authorization headers to the origin (for this use case, API Gateway). If you're using IAM authentication for your >API or custom domain names for your distribution, you must do one of the following..."
+
+### Other Important Points
+
+1. Even though you can apply a resource policy to a public api without IAM on, only non-IAM conditions are evaluated without turning on IAM. IAM identity conditions are still applied on the invoking side
+2. API Gateway edge endpoints don’t forward auth headers, but if they were previously regional endpoints and you had a successful call against it, that auth can be cached for a period of time and succeed against the point when it is switched to edge.
+3. There is some delay in switching between edge and regional endpoints in the background, even when the operation succeeds. This manifests itself if you try to reverse the switch and go back the opposite way too fast. IE regional -> edge -> regional
+
+### TL;DR | Takeway
+
+when using IAM authentication and a resource policy while allowing cross-account invokers, the endpoint should be REGIONAL, and IAM authentication needs turned on for the API Gateway method.
+
 ## Configuration - AWS Systems Manager Parameter Store (SSM)
 
 The following values are used to configure the deployment of this service (see below for more background and context).
@@ -9,6 +25,7 @@ The following values are used to configure the deployment of this service (see b
 | .../iam/permissionsBoundaryPolicy | N | Y | Y | Specifies the [IAM Permissions Boundary](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html) that should be attached to all IAM objects. A permissions boundary is an advanced feature for using a managed policy to set the maximum permissions that an identity-based policy can grant to an IAM entity. If set, this parmeter should contain the full ARN to the policy.|
 | .../warmup/schedule | N | Y | Y | This is a set schedule for warming up the lambda function.|
 | .../warmup/concurrency | N | Y | Y | The number of lambda functions to invoke on warmup. The higher this number the warm lambda containers are ready to go.|
+|.../macpro-platform-doc-conversion/iam/invoke-arns | N | Y | Y | StringList of ARNs that get added to the resource policy as allowed invokers. Must be without quotes, no spaces, comma seperated. IAM roles, users, and accounts are all valid here. Defaults to the account this code is deployed in. Works for cross-account.
 | .../prince/license | Y | Y | Y | Specifies the license to be applied to PrinceXML. The non-commercial use license can be extracted from [PrinceXML's zip archive](https://www.princexml.com/download/prince-14.2-aws-lambda.zip) at the path `prince-engine/license/license.dat`.|
 
 This project uses [AWS Systems Manager Parameter Store](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-parameter-store.html), often referred to as simply SSM, to inject environment specific, project specific, and/or sensitive information into the deployment.
