@@ -1,1 +1,4 @@
 requests
+botocore
+aws-requests-auth
+boto3
