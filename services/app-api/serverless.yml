@@ -28,7 +28,7 @@ custom:
       - val
       - production
   webAclName: ${self:service}-${self:custom.stage}-webacl
-  princeLicense: ${ssm:/configuration/${self:custom.stage}/prince/license~true, ssm:/configuration/default/prince/license~true, ""}
+  princeLicense: ${ssm:/configuration/${self:custom.stage}/prince/license, ssm:/configuration/default/prince/license, ""}
   associateWaf:
     name: ${self:custom.webAclName}
     version: V2
