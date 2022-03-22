@@ -102,7 +102,7 @@ sending request to https://abc123.execute-api.us-east-1.amazonaws.com/master/pri
 508 PDF written to: /Users/jeffreysobchak/Desktop/prince-master.pdf
 ```
 
-## Invocation example #2 (IAM Authorization) in ec2
+## Invocation example #2 (IAM Authorization) in EC2 or ECS (EC2, Fargate)
 
 By default authorization is handled by IAM via a resource policy on the API Gateway. For more details, consult the readme in `services/app-api`.
 
@@ -122,6 +122,8 @@ ensuring the IAM role gets added to the API Gateway resource policy:
 ```
 
 Additionally, the IAM role needs `"execute-api:Invoke"` on `"Resource": "arn:aws:execute-api:us-east-1:*`.
+
+**NOTE:** for ECS, the IAM role that has the above `execute-api` permissions needs to be assigned to the *Task role*, NOT the *Task execution role*. The latter is used to pull container images and publish container logs, while the former is the role your invoking code uses. These two roles are named confusingly by AWS.
 
 [IAM authentication and resource policy](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-authorization-flow.html#apigateway-authorization-flow-iam) covers the why in extensive detail. TL;DR both the identity policy (invoker) and resource policy (API Gateway) matter.
 
