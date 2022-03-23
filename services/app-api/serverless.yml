@@ -131,12 +131,16 @@ resources:
               SampledRequestsEnabled: true
               CloudWatchMetricsEnabled: true
               MetricName: WafWebAcl
-          - Name: "AWS-AWSManagedRulesAmazonIpReputationList"
+          - Name: ${self:custom.webAclName}-AWS-AWSManagedRulesAmazonIpReputationList
             Priority: 1
+            Statement:
+              ManagedRuleGroupStatement:
+                VendorName: AWS
+                Name: AWSManagedRulesAmazonIpReputationList
             VisibilityConfig:
               SampledRequestsEnabled: true
               CloudWatchMetricsEnabled: true
-              MetricName: "AWS-AWSManagedRulesAmazonIpReputationList"
+              MetricName: ${self:custom.webAclName}-AWS-AWSManagedRulesAmazonIpReputationList
         Scope: REGIONAL
         VisibilityConfig:
           CloudWatchMetricsEnabled: true
