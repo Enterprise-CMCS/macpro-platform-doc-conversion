@@ -133,6 +133,8 @@ resources:
               MetricName: WafWebAcl
           - Name: ${self:custom.webAclName}-AWS-AWSManagedRulesAmazonIpReputationList
             Priority: 1
+            OverrideAction:
+              None: {}
             Statement:
               ManagedRuleGroupStatement:
                 VendorName: AWS
