@@ -131,11 +131,19 @@ resources:
               SampledRequestsEnabled: true
               CloudWatchMetricsEnabled: true
               MetricName: WafWebAcl
+          - Name: "AWS-AWSManagedRulesAmazonIpReputationList"
+            Priority: 1,
+            VisibilityConfig:
+              SampledRequestsEnabled: true,
+              CloudWatchMetricsEnabled: true,
+              MetricName: "AWS-AWSManagedRulesAmazonIpReputationList"
         Scope: REGIONAL
         VisibilityConfig:
           CloudWatchMetricsEnabled: true
           SampledRequestsEnabled: true
           MetricName: ${self:custom.stage}-webacl
+
+
   Outputs:
     ApiGatewayRestApiName:
       Value: !Ref ApiGatewayRestApi
