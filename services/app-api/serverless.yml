@@ -124,8 +124,8 @@ resources:
             VisibilityConfig:
               SampledRequestsEnabled: true
               CloudWatchMetricsEnabled: true
-              MetricName: ${self:custom.webAclName}-DDOSRateLimitRule
-          - Name: ${self:custom.webAclName}-RegAWSCommonRule
+              MetricName: ${self:custom.webAclName}-DDOSRateLimitRuleMetric
+          - Name: ${self:custom.webAclName}-AWSCommonRule
             Priority: 1
             OverrideAction:
               None: {}
@@ -136,7 +136,7 @@ resources:
             VisibilityConfig:
               SampledRequestsEnabled: true
               CloudWatchMetricsEnabled: true
-              MetricName: ${self:custom.webAclName}-RegAWSCommonRuleMetric
+              MetricName: ${self:custom.webAclName}-AWSCommonRuleMetric
           - Name: ${self:custom.webAclName}-AWSManagedRulesAmazonIpReputationList
             Priority: 2
             OverrideAction:
