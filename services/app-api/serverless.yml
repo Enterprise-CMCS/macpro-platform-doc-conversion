@@ -115,8 +115,8 @@ resources:
         Rules:
           - Name: ${self:custom.webAclName}-DDOSRateLimitRule
             Priority: 0
-            OverrideAction:
-              None: {}
+            Action:
+              Block: {}
             Statement:
               RateBasedStatement:
                 Limit: 5000
