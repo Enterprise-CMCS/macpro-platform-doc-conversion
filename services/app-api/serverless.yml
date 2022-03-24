@@ -115,6 +115,8 @@ resources:
         Rules:
           - Name: ${self:custom.webAclName}-DDOSRateLimitRule
             Priority: 0
+            OverrideAction:
+              None: {}
             Statement:
               RateBasedStatement:
                 Limit: 5000
@@ -125,6 +127,8 @@ resources:
               MetricName: ${self:custom.webAclName}-DDOSRateLimitRule
           - Name: ${self:custom.webAclName}-RegAWSCommonRule
             Priority: 1
+            OverrideAction:
+              None: {}
             Statement:
               ManagedRuleGroupStatement:
                 VendorName: AWS
@@ -135,6 +139,8 @@ resources:
               MetricName: ${self:custom.webAclName}-RegAWSCommonRuleMetric
           - Name: ${self:custom.webAclName}-AWSManagedRulesAmazonIpReputationList
             Priority: 2
+            OverrideAction:
+              None: {}
             Statement:
               ManagedRuleGroupStatement:
                 VendorName: AWS
@@ -145,6 +151,8 @@ resources:
               MetricName: ${self:custom.webAclName}-AWSManagedRulesAmazonIpReputationListMetric
           - Name: ${self:custom.webAclName}-AWSManagedRulesKnownBadInputsRuleSet
             Priority: 3
+            OverrideAction:
+              None: {}
             Statement:
               ManagedRuleGroupStatement:
                 VendorName: AWS
