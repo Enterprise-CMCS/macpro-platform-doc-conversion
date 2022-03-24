@@ -17,7 +17,6 @@ plugins:
   - serverless-online
   - serverless-plugin-scripts
   - serverless-s3-bucket-helper
-
 custom:
   stage: ${opt:stage, self:provider.stage}
   region: ${opt:region, self:provider.region}
@@ -114,10 +113,60 @@ resources:
         DefaultAction:
           Block: {}
         Rules:
-          - Action:
-              Allow: {}
-            Name: ${self:custom.webAclName}-allow-usa-plus-territories
+          - Name: ${self:custom.webAclName}-DDOSRateLimitRule
             Priority: 0
+            Action:
+              Block: {}
+            Statement:
+              RateBasedStatement:
+                Limit: 5000
+                AggregateKeyType: IP
+            VisibilityConfig:
+              SampledRequestsEnabled: true
+              CloudWatchMetricsEnabled: true
+              MetricName: ${self:custom.webAclName}-DDOSRateLimitRuleMetric
+          - Name: ${self:custom.webAclName}-AWSCommonRule
+            Priority: 1
+            OverrideAction:
+              None: {}
+            Statement:
+              ManagedRuleGroupStatement:
+                VendorName: AWS
+                Name: AWSManagedRulesCommonRuleSet
+                ExcludedRules:
+                  - Name: SizeRestrictions_BODY
+            VisibilityConfig:
+              SampledRequestsEnabled: true
+              CloudWatchMetricsEnabled: true
+              MetricName: ${self:custom.webAclName}-AWSCommonRuleMetric
+          - Name: ${self:custom.webAclName}-AWSManagedRulesAmazonIpReputationList
+            Priority: 2
+            OverrideAction:
+              None: {}
+            Statement:
+              ManagedRuleGroupStatement:
+                VendorName: AWS
+                Name: AWSManagedRulesAmazonIpReputationList
+            VisibilityConfig:
+              SampledRequestsEnabled: true
+              CloudWatchMetricsEnabled: true
+              MetricName: ${self:custom.webAclName}-AWSManagedRulesAmazonIpReputationListMetric
+          - Name: ${self:custom.webAclName}-AWSManagedRulesKnownBadInputsRuleSet
+            Priority: 3
+            OverrideAction:
+              None: {}
+            Statement:
+              ManagedRuleGroupStatement:
+                VendorName: AWS
+                Name: AWSManagedRulesKnownBadInputsRuleSet
+            VisibilityConfig:
+              SampledRequestsEnabled: true
+              CloudWatchMetricsEnabled: true
+              MetricName: ${self:custom.webAclName}-AWSManagedRulesKnownBadInputsRuleSetMetric
+          - Name: ${self:custom.webAclName}-allow-usa-plus-territories
+            Priority: 5
+            Action:
+              Allow: {}
             Statement:
               GeoMatchStatement:
                 CountryCodes:
@@ -130,12 +179,13 @@ resources:
             VisibilityConfig:
               SampledRequestsEnabled: true
               CloudWatchMetricsEnabled: true
-              MetricName: WafWebAcl
+              MetricName: ${self:custom.webAclName}-allow-usa-plus-territories-metric
         Scope: REGIONAL
         VisibilityConfig:
           CloudWatchMetricsEnabled: true
           SampledRequestsEnabled: true
           MetricName: ${self:custom.stage}-webacl
+
   Outputs:
     ApiGatewayRestApiName:
       Value: !Ref ApiGatewayRestApi
