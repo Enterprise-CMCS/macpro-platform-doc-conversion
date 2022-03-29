@@ -1335,6 +1335,21 @@ aws-sdk@^2.1063.0:
     uuid "3.3.2"
     xml2js "0.4.19"
 
+aws-sdk@^2.1073.0:
+  version "2.1103.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1103.0.tgz#b0c69b8fd0a31729860bd9218f3c691d06240fcb"
+  integrity sha512-naSAcfoLs55byP8djBHXgZQF3pcsgyX815HSPYjqkzmlukbE9mCVoguUp5rbqLYbLgcnMw4tp2N4ohpBB3voIg==
+  dependencies:
+    buffer "4.9.2"
+    events "1.1.1"
+    ieee754 "1.1.13"
+    jmespath "0.16.0"
+    querystring "0.2.0"
+    sax "1.2.1"
+    url "0.10.3"
+    uuid "3.3.2"
+    xml2js "0.4.19"
+
 babel-jest@^27.5.1:
   version "27.5.1"
   resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-27.5.1.tgz#a1bf8d61928edfefd21da27eb86a695bfd691444"
@@ -3232,6 +3247,13 @@ serverless-associate-waf@^1.2.1:
   integrity sha512-84FIjRsNJ4im+Q1rmlwc+7ofyZXB6D0AZr9tfbBCfh25/qwv/8Q9h78/aDrR7LZT5XAZzrM6qAbwHFyUD5wd+A==
   dependencies:
     chalk "^2.4.2"
+
+serverless-domain-manager@^6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/serverless-domain-manager/-/serverless-domain-manager-6.0.2.tgz#d93578843b50d5e2e8dd96870e0d9489f21d2135"
+  integrity sha512-57PaNI0/LtFubn5/F0i2eTV6eQ9BFDXn1kk90/eHRKpQql0e/udMEWkJ9rk+Mgzv6lushHo9EPeyGVcl85RF9Q==
+  dependencies:
+    aws-sdk "^2.1073.0"
 
 shebang-command@^2.0.0:
   version "2.0.0"
