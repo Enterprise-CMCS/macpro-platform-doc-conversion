@@ -17,6 +17,7 @@ plugins:
   - serverless-online
   - serverless-plugin-scripts
   - serverless-s3-bucket-helper
+  - serverless-domain-manager
 custom:
   stage: ${opt:stage, self:provider.stage}
   region: ${opt:region, self:provider.region}
@@ -46,6 +47,29 @@ custom:
         mkdir -p prince-engine/license && echo '${self:custom.princeLicense}' > prince-engine/license/license.dat
         [ -s prince-engine/license/license.dat ]
         [ "$?" -eq "0" ] && zip lambda_layer.zip prince-engine/license/license.dat
+
+  domains:
+    production: macpro-platform-prod.cms.gov
+    val: macpro-platform-val.cms.gov
+    master: macpro-platform-dev.cms.gov
+    other: macpro-platform-dev.cms.gov
+
+  basePaths:
+    production: "doc-conv"
+    val: "doc-conv"
+    master: "doc-conv"
+    other: "${self:custom.stage}-doc-conv"
+
+  customDomain:
+    domainName: ${self:custom.domains.${self:custom.stage}, self:custom.domains.other}
+    basePath: ${self:custom.basePaths.${self:custom.stage}, self:custom.basePaths.other}
+    stage: "${self:custom.stage}"
+    endpointType: "regional"
+    createRoute53Record: true
+    createRoute53IPv6Record: true
+    securityPolicy: tls_1_0
+    autoDomain: true
+
 provider:
   name: aws
   runtime: nodejs12.x
@@ -83,7 +107,7 @@ functions:
       - !Ref PrinceLambdaLayer
     events:
       - http:
-          path: prince
+          path: 508html-to-508pdf
           method: post
           cors: true
           authorizer: aws_iam
