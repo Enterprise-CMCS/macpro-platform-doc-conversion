@@ -112,7 +112,7 @@ functions:
           cors: true
           authorizer: aws_iam
 
-  prince:
+  508html-to-508pdf:
     handler: handlers/prince.main
     timeout: 30
     memorySize: 3008
