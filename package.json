@@ -28,6 +28,9 @@
     "serverless-stack-termination-protection": "^1.0.4"
   },
   "dependencies": {},
+  "//resolutions": {
+    "comment": "resolutions below are work arounds to upgrade vuln dependencies for serverless v2 until we upgrade to v3"
+  },
   "resolutions": {
     "ansi-regex": "5.0.1",
     "nanoid": "3.1.31",
