@@ -6,6 +6,8 @@ Initial API:
 
 - 508 compliant HTML -> 508 compliant PDF (via Prince XML)
   - Input needs to be base 64 encoded
+    - NOTE: `title` and `lang` tags should be set in the HTML body in order for Prince to set these attributes in the resulting PDF.
+      Reference `examples/test_data/test.html` for an example.
   - Output is base 64 encoded
 
 ## Release
