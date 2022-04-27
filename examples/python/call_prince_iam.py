@@ -3,6 +3,10 @@ import requests
 import base64
 import json
 import argparse
+import ssl
+print("\n\n\nCustom domain deployed from this repo requires TLS 1.2 or higher.")
+print("We must be at openssl version 1.0.1 or higher to get TLS 1.2")
+print("your version of SSL: ", ssl.OPENSSL_VERSION, "\n\n\n")
 
 # note that this line will fail if you do not have botocore installed
 # botocore installation instructions available here:
