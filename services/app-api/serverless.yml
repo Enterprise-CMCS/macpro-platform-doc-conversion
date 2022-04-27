@@ -98,20 +98,6 @@ layers:
       artifact: lambda_layer.zip
 
 functions:
-  prince:
-    handler: handlers/prince.main
-    timeout: 30
-    memorySize: 3008
-    maximumRetryAttempts: 0
-    layers:
-      - !Ref PrinceLambdaLayer
-    events:
-      - http:
-          path: prince
-          method: post
-          cors: true
-          authorizer: aws_iam
-
   508html-to-508pdf:
     handler: handlers/prince.main
     timeout: 30
