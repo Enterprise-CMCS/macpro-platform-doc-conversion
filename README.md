@@ -228,3 +228,5 @@ To set the SLACK_WEBHOOK_URL:
 - Create new app : fill in the information
 - Add features and funtionality----Incoming webhooks--- activative incoming webooks--- Add new webhook to workspace.
 - copy new webhook url and set it as SLACK_WEBHOOK_URL in Github Actions Secrets.
+
+Kenrick recommendations
