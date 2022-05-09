@@ -6928,11 +6928,6 @@ serverless-s3-bucket-helper@CMSgov/serverless-s3-bucket-helper#0.1.1:
   version "1.0.0"
   resolved "https://codeload.github.com/CMSgov/serverless-s3-bucket-helper/tar.gz/f0f6d6a1ffe54e292f0afc93777764bce16a4037"
 
-serverless-stack-termination-protection@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/serverless-stack-termination-protection/-/serverless-stack-termination-protection-2.0.0.tgz#912dfa44f630186a7febb33a5e4d98116528976e"
-  integrity sha512-MZ98a5aQoS46ppMKZFtbJCbWWmQov63dfvWsfjhb3FrITtABuZsoYd2T58qIOK0jT5c4IC6qQrtk/Z3jOe4pqQ==
-
 serverless-webpack@^5.6.1:
   version "5.6.1"
   resolved "https://registry.yarnpkg.com/serverless-webpack/-/serverless-webpack-5.6.1.tgz#f3524638d940264356a86a9853bb5b5fb94b149e"

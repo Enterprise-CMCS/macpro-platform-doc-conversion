@@ -2,7 +2,6 @@
 service: app-api
 
 frameworkVersion: "3"
-variablesResolutionMode: "20210326"
 
 package:
   individually: true
@@ -11,7 +10,6 @@ plugins:
   - serverless-bundle
   - serverless-plugin-warmup
   - serverless-associate-waf
-  - serverless-stack-termination-protection
   - serverless-idempotency-helper
   - serverless-iam-helper
   - serverless-online
