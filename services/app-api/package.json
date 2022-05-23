@@ -16,8 +16,8 @@
   "devDependencies": {
     "regenerator-runtime": "^0.13.9",
     "serverless-associate-waf": "^1.2.1",
-    "util": "^0.12.4",
-    "serverless-domain-manager": "^6.0.2"
+    "serverless-domain-manager": "^6.0.3",
+    "util": "^0.12.4"
   },
   "dependencies": {
     "@babel/preset-env": "^7.16.11",
