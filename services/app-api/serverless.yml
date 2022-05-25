@@ -1,8 +1,7 @@
 # Refer to the README.md file in within this service directory to configure all ssm parameters required for this service.
 service: app-api
 
-frameworkVersion: "2"
-variablesResolutionMode: "20210326"
+frameworkVersion: "3"
 
 package:
   individually: true
@@ -73,7 +72,7 @@ custom:
 
 provider:
   name: aws
-  runtime: nodejs12.x
+  runtime: nodejs14.x
   region: us-east-1
   logs:
     restApi: true
