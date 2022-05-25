@@ -46,6 +46,7 @@ custom:
         mkdir -p prince-engine/license && echo '${self:custom.princeLicense}' > prince-engine/license/license.dat
         [ -s prince-engine/license/license.dat ]
         [ "$?" -eq "0" ] && zip lambda_layer.zip prince-engine/license/license.dat
+        zip -r lambda_layer.zip fonts
 
   domains:
     production: macpro-platform-prod.cms.gov
