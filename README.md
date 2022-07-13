@@ -192,7 +192,7 @@ Example test input lambda function (can be tested in AWS console):
 
 ## Fonts
 
-This API supports Open Sans and DejaVu Sans fonts natively. The latter font is primarily used to ensure Ballot Box and Checked Ballot Box characters are available.  If you wish to call this API with another font, it can be imported via url.  An example can be found in the [test html data](../blob/master/examples/test_data/test.html).  Alternatively, you can request the MACPRO Platform team load the font into the API.  The former is preferred, as Lambda package ZIPs have size limits.
+This API supports Open Sans and DejaVu Sans fonts natively. The latter font is primarily used to ensure Ballot Box and Checked Ballot Box characters are available.  If you wish to call this API with another font, it can be imported via url.  An example can be found in the [test html data](../master/examples/test_data/test.html).  Alternatively, you can request the MACPRO Platform team load the font into the API.  The former is preferred, as Lambda package ZIPs have size limits.
 
 ## Contributing / To-Do
 
