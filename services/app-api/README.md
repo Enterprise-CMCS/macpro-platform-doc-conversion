@@ -17,10 +17,10 @@ https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-cloudfront-di
 when using IAM authentication and a resource policy while allowing cross-account invokers, the endpoint should be REGIONAL, and IAM authentication needs turned on for the API Gateway method.
 
 ## Fonts
-Open Sans and DejaVu Sans fonts are packaged with the Lambda.  The latter font is primarily used to ensure Ballot Box and Checked Ballot Box characters are available. 
 
-DejaVu Sans hasn't been updated in some time, so we looked at replacing it with a Google font like Source Code Pro that contained the Ballot Box and Checked Ballot Box symbols.  When a symbol is not available in the fonts specified, Prince will fall back to the next font in the cascade, typically a [Genric font family](https://www.princexml.com/doc/11/fonts/#font-families).  On Linux DejaVu is one of the generic fonts.  Thus, including DejaVu Sans in the lambda zip means the aforementioned ballot box symbols fall through and find a match.  Source Code Pro is not part of the generic font families, so including it instead of DejaVu Sans means a match for Ballot Box and Checked Ballot Box is not found.  Generic font families can be redefined from defaults, but we don't want to override developer desired fonts.
+Open Sans and DejaVu Sans fonts are packaged with the Lambda. The latter font is primarily used to ensure Ballot Box and Checked Ballot Box characters are available.
 
+DejaVu Sans hasn't been updated in some time, so we looked at replacing it with a Google font like Source Code Pro that contained the Ballot Box and Checked Ballot Box symbols. When a symbol is not available in the fonts specified, Prince will fall back to the next font in the cascade, typically a [Genric font family](https://www.princexml.com/doc/11/fonts/#font-families). On Linux DejaVu is one of the generic fonts. Thus, including DejaVu Sans in the lambda zip means the aforementioned ballot box symbols fall through and find a match. Source Code Pro is not part of the generic font families, so including it instead of DejaVu Sans means a match for Ballot Box and Checked Ballot Box is not found. Generic font families can be redefined from defaults, but we don't want to override developer desired fonts.
 
 ## Configuration - AWS Systems Manager Parameter Store (SSM)
 
