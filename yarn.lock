@@ -1372,6 +1372,15 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
+"@stratiformdigital/serverless-idempotency-helper@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@stratiformdigital/serverless-idempotency-helper/-/serverless-idempotency-helper-3.2.0.tgz#673de76c0d31af7064e9d53c6219f2410baf67b7"
+  integrity sha512-Drsl02ceaQMABEF/JGbBfHqB1GWr2CkEmvPD2S/Ulruxwu2PM1h6wDWJ7xr8ElAVT4To284vD6dmtm2jhMVMgg==
+  dependencies:
+    bestzip "^2.2.1"
+    extract-zip "^2.0.1"
+    lodash "^4.17.21"
+
 "@szmarczak/http-timer@^4.0.5":
   version "4.0.6"
   resolved "https://registry.yarnpkg.com/@szmarczak/http-timer/-/http-timer-4.0.6.tgz#b4a914bb62e7c272d4e5989fe4440f812ab1d807"
@@ -2234,7 +2243,7 @@ base@^0.11.1:
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
 
-bestzip@^2.2.0:
+bestzip@^2.2.0, bestzip@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/bestzip/-/bestzip-2.2.1.tgz#6f14c48e7abf57dfac60aecb45ee4571b77b37a7"
   integrity sha512-XdAb87RXqOqF7C6UgQG9IqpEHJvS6IOUo0bXWEAebjSSdhDjsbcqFKdHpn5Q7QHz2pGr3Zmw4wgG3LlzdyDz7w==
@@ -6942,14 +6951,6 @@ serverless-iam-helper@CMSgov/serverless-iam-helper:
   version "1.0.0"
   resolved "https://codeload.github.com/CMSgov/serverless-iam-helper/tar.gz/e51709dfbb9461c18712cc429f489504d543c4c7"
   dependencies:
-    lodash "^4.17.21"
-
-serverless-idempotency-helper@CMSgov/serverless-idempotency-helper:
-  version "1.0.0"
-  resolved "https://codeload.github.com/CMSgov/serverless-idempotency-helper/tar.gz/22a96de1495fea2d295cadb966e503aefbc1b086"
-  dependencies:
-    bestzip "^2.2.0"
-    extract-zip "^2.0.1"
     lodash "^4.17.21"
 
 serverless-online@CMSgov/serverless-online:
