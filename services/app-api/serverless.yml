@@ -76,6 +76,8 @@ provider:
   region: us-east-1
   logs:
     restApi: true
+  tracing:
+    apiGateway: true
   iam:
     role:
       path: ${ssm:/configuration/${self:custom.stage}/iam/path, ssm:/configuration/default/iam/path, "/"}
