@@ -11,7 +11,7 @@ plugins:
   - serverless-plugin-warmup
   - serverless-associate-waf
   - serverless-stack-termination-protection
-  - serverless-idempotency-helper
+  - "@stratiformdigital/serverless-idempotency-helper"
   - serverless-iam-helper
   - serverless-online
   - serverless-plugin-scripts
