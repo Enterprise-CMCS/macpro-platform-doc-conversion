@@ -1,12 +1,12 @@
 ---
 layout: default
-title: Development Workflows
+title: Developer Guide
 nav_order: 4
 has_children: true
-permalink: docs/development-workflows
+permalink: docs/developer-guide
 ---
 
-# Development Workflows
+# Developer Guide
 {: .no_toc }
 
 How to do common things as a developer on the project

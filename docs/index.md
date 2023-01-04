@@ -18,13 +18,13 @@ permalink: /
 
 ## Welcome!
 
-{{ site.repo.name }} is a serverless monorepo accelerator. The actual application is fairly 'hello world', but the repository support and configuration is full featured. This is by design, to allow for simpler project creation from the template. Full CI/CD support with GitHub Actions, automated security scanning, docs site in GitHub Pages, PR/Issue templates, infrastructure and application deployment workflows, etc. is all included.
+The {{ site.repo.name }} project is a serverless monorepo accelerator. The actual application is fairly 'hello world', but the repository support and configuration is full featured. This is by design, to allow for simpler project creation from the template. Full CI/CD support with GitHub Actions, automated security scanning, docs site in GitHub Pages, PR/Issue templates, infrastructure and application deployment workflows, etc. is all included.
 
 ---
 
 ## About the project
 
-The {{ site.repo.name }} is a work of the [Centers for Medicare & Medicaid Services (CMS)](https://www.cms.gov/).
+The {{ site.repo.name }} project is a work of the [Centers for Medicare & Medicaid Services (CMS)](https://www.cms.gov/).
 
 
 #### Thank you to the contributors of {{ site.repo.name }}!

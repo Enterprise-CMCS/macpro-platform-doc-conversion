@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Run Docs Site Locally
-parent: Development Workflows
+parent: Developer Guide
 nav_order: 4
 ---
 

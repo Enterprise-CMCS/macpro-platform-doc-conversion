@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Development Metrics Page
+title: Development Metrics
 nav_order: 7
 ---
 

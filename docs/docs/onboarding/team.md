@@ -30,4 +30,4 @@ A list of a few important roles and people on the project (not comprehensive!):
 
 Core Team work hours are {{ site.team.core_hours }}.
 
-We strive to do most work asynchronously, as we are spread across timezones and have others demands on our time. Using Pull Request reviews, GitHub Discussions, Slack, and email are examples of ways we try to keep things async. However, we strive to be available online for meetings and pair programming during this time window.
+We strive to do most work asynchronously, as we are spread across timezones and have others demands on our time. Using Pull Request reviews and comments, Slack, and email are examples of ways we try to keep things async. However, we strive to be available online for meetings and pair programming during this time window.

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Subscribing to Alerts
-parent: Development Workflows
+parent: Developer Guide
 nav_order: 6
 ---
 

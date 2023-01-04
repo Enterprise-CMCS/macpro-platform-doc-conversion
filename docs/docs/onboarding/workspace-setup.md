@@ -19,7 +19,7 @@ Before you begin development, it's important to configure your workstation prope
 ---
 
 ## Development Tool list
-This is a static list of tools that should be pre-installed to support all development workflows. Please understand that the installation of most of these tools is automated, which will be discussed in the next section.  This serves as a general overview of what will be installed.
+This is a static list of tools that should be pre-installed to support all Developer Guide. Please understand that the installation of most of these tools is automated, which will be discussed in the next section.  This serves as a general overview of what will be installed.
 
 | Tool                                                                              | Version   | Required |
 | --------------------------------------------------------------------------------- | --------- | -------- |

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Deploy a Stage
-parent: Development Workflows
+parent: Developer Guide
 nav_order: 3
 ---
 
@@ -28,7 +28,7 @@ This deploys the entire application, so the entire stage, to AWS.
 - Completed all [onboarding]({{ site.baseurl }}{% link docs/onboarding/onboarding.md %})
 
 #### Procedure
-- [Obtain and set AWS CLI credentials]({{ site.baseurl }}{%link docs/development-workflows/aws-auth.md %})
+- [Obtain and set AWS CLI credentials]({{ site.baseurl }}{%link docs/developer-guide/aws-auth.md %})
 - Deploy using the run script:
   ```bash
     cd {{ site.repo.name }}
@@ -48,7 +48,7 @@ This will deploy a single service for a given stage.  All other services on whic
 - Completed all [onboarding]({{ site.baseurl }}{% link docs/onboarding/onboarding.md %})
 
 #### Procedure
-- [Obtain and set AWS CLI credentials]({{ site.baseurl }}{%link docs/development-workflows/aws-auth.md %})
+- [Obtain and set AWS CLI credentials]({{ site.baseurl }}{%link docs/developer-guide/aws-auth.md %})
 - Deploy using the run script:
   ```bash
     cd {{ site.repo.name }}
@@ -70,7 +70,7 @@ Each branch pushed to the {{ site.repo.name }} git repository is automatically d
 - Git repo write access; complete the Git access request portion of [onboarding]({{ site.baseurl }}{% link docs/onboarding/onboarding.md %})
 
 #### Procedure
-- [Obtain and set AWS CLI credentials]({{ site.baseurl }}{%link docs/development-workflows/aws-auth.md %})
+- [Obtain and set AWS CLI credentials]({{ site.baseurl }}{%link docs/developer-guide/aws-auth.md %})
 - Create a new branch based off of any other branch or commit.  The 'master' branch is the most common branch from which to create new branches, and is shown in the following procedure.:
   ```bash
     cd {{ site.repo.name }}

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Destroy a Stage
-parent: Development Workflows
+parent: Developer Guide
 nav_order: 3
 ---
 
@@ -72,7 +72,7 @@ This destroys an entire application, so the entire stage, to AWS.
 
 #### Procedure
 - Stop and think about what you are doing.  Destroying is a lot easier to avoid then to undo.
-- [Obtain and set AWS CLI credentials]({{ site.baseurl }}{%link docs/development-workflows/aws-auth.md %})
+- [Obtain and set AWS CLI credentials]({{ site.baseurl }}{%link docs/developer-guide/aws-auth.md %})
 - Destroy using the run script:
   ```bash
     cd {{ site.repo.name }}
@@ -96,7 +96,7 @@ This will destroy a single service for a given stage.
 
 #### Procedure
 - Stop and think about what you are doing.  Destroying is a lot easier to avoid then to undo.
-- [Obtain and set AWS CLI credentials]({{ site.baseurl }}{%link docs/development-workflows/aws-auth.md %})
+- [Obtain and set AWS CLI credentials]({{ site.baseurl }}{%link docs/developer-guide/aws-auth.md %})
 - Destroy a single service using the run script:
   ```bash
     cd {{ site.repo.name }}

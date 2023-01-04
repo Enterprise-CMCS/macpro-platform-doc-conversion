@@ -5,7 +5,7 @@
     <img alt="Docs" src="https://img.shields.io/badge/Docs-Pages-blue.svg">
   </a>
   <a href="https://cmsgov.slack.com/archives/C04D6HXJ3GA">
-    <img alt="Slack" src="https://img.shields.io/badge/Slack-base--template-purple.svg">
+    <img alt="Slack" src="https://img.shields.io/badge/Slack-channel-purple.svg">
   </a>
   <a href="https://codeclimate.com/github/Enterprise-CMCS/macpro-base-template/maintainability">
     <img src="https://api.codeclimate.com/v1/badges/f7cce65e43346ac8e2c2/maintainability" />
@@ -23,7 +23,7 @@
 
 ---
 
-### Please visit our [macpro-base-template docs site](https://enterprise-cmcs.github.io/macpro-base-template/) for complete documentation.
+### Please visit our [docs site](https://enterprise-cmcs.github.io/macpro-base-template/) for complete documentation.
 
 ---
 

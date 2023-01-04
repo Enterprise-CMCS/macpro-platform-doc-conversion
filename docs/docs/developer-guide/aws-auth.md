@@ -1,7 +1,7 @@
 ---
 layout: default
 title: AWS Login
-parent: Development Workflows
+parent: Developer Guide
 nav_order: 1
 ---
 

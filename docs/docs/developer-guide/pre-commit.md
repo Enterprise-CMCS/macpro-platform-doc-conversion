@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Pre-commit
-parent: Development Workflows
+parent: Developer Guide
 nav_order: 8
 ---
 

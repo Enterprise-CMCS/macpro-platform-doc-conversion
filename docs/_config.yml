@@ -67,7 +67,7 @@ heading_anchors: true
 
 # Aux links for the upper right navigation
 aux_links:
-  "MacPro Base Template on GitHub":
+  "GitHub":
     - "https://github.com/Enterprise-CMCS/macpro-base-template"
 aux_links_new_tab: false
 
@@ -76,7 +76,7 @@ nav_sort: case_sensitive # Capital letters sorted before lowercase
 
 # External navigation links
 nav_external_links:
-  - title: MacPro Base Template on GitHub
+  - title: GitHub
     url: https://github.com/Enterprise-CMCS/macpro-base-template
   - title: Slack
     url: https://cmsgov.slack.com/archives/C04D6HXJ3GA
