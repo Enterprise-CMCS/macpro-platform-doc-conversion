@@ -12,8 +12,8 @@ plugins:
   - serverless-associate-waf
   - serverless-stack-termination-protection
   - "@stratiformdigital/serverless-idempotency-helper"
-  - serverless-iam-helper
-  - serverless-online
+  - "@stratiformdigital/serverless-iam-helper"
+  - "@stratiformdigital/serverless-online"
   - serverless-plugin-scripts
   - serverless-s3-bucket-helper
   - serverless-domain-manager
