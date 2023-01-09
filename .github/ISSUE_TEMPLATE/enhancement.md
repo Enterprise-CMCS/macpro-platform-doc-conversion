@@ -10,10 +10,6 @@ assignees: ""
 
 - [x] Enhancement: New feature or request
 
-#### Issue Creator Checklist
-
-- [ ] This issue has been thoroughly documented below; a developer should be able to understand the issue by reading it.
-
 ## Background
 
 _History or background behind this enhancement request._
