@@ -15,7 +15,7 @@ plugins:
   - "@stratiformdigital/serverless-iam-helper"
   - "@stratiformdigital/serverless-online"
   - serverless-plugin-scripts
-  - serverless-s3-bucket-helper
+  - "@stratiformdigital/serverless-s3-security-helper"
   - serverless-domain-manager
 custom:
   stage: ${opt:stage, self:provider.stage}
