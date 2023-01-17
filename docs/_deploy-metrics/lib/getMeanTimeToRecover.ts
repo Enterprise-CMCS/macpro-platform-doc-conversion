@@ -6,7 +6,7 @@ export const getMeanTimeToRecover = async (branch: string) => {
   const response = await octokit.paginate(
     "GET /repos/{owner}/{repo}/actions/workflows/{workflow_id}/runs",
     {
-      owner: "Enterprise-CMCS",
+      owner: "cmsgov",
       repo: getRepoName,
       workflow_id: "deploy.yml",
       branch,

@@ -6,7 +6,7 @@ export const getPrsToBranch = async (branch: string) => {
   const data = await octokit.paginate(
     "GET /repos/{owner}/{repo}/pulls",
     {
-      owner: "Enterprise-CMCS",
+      owner: "cmsgov",
       repo: getRepoName,
       state: "closed",
       per_page: 100,
