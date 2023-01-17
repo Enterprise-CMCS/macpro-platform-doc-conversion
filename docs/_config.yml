@@ -7,7 +7,7 @@
 #   ex:  "This is the {{ site.title }}" ->  "This is the Base Template"
 # That's the short story.  Please update this file for your project.
 # If running Jekyll locally, changes to this file require a full restart of Jekyll.
-# Thanks, and have fun!  
+# Thanks, and have fun!
 #   - MACPro Platform Team
 
 title: Base Template
@@ -48,16 +48,32 @@ meetings:
     link: Ask for the Hangouts invite on Slack.
 
 repo:
-  org: Enterprise-CMCS
+  org: cmsgov
   name: macpro-base-template
-  url: https://github.com/Enterprise-CMCS/macpro-base-template
+  url: https://github.com/cmsgov/macpro-platform-doc-conversion
 
-slack: 
+slack:
   channel_url: https://cmsgov.slack.com/archives/C04D6HXJ3GA
 
 remote_theme: just-the-docs/just-the-docs
 permalink: pretty
-exclude: [".jekyll-cache", "node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]
+exclude:
+  [
+    ".jekyll-cache",
+    "node_modules/",
+    "*.gemspec",
+    "*.gem",
+    "Gemfile",
+    "Gemfile.lock",
+    "package.json",
+    "package-lock.json",
+    "script/",
+    "LICENSE.txt",
+    "lib/",
+    "bin/",
+    "README.md",
+    "Rakefile",
+  ]
 
 layout: default
 nav_order: 2
@@ -67,7 +83,7 @@ has_toc: false
 # Default search settings.
 search_enabled: true
 search:
-  heading_level: 2 
+  heading_level: 2
   previews: 2
   preview_words_before: 3
   preview_words_after: 3
@@ -80,7 +96,7 @@ heading_anchors: true
 # Aux links for the upper right navigation
 aux_links:
   "GitHub":
-    - "https://github.com/Enterprise-CMCS/macpro-base-template"
+    - "https://github.com/cmsgov/macpro-platform-doc-conversion"
   "Jira":
     - "https://qmacbis.atlassian.net/jira/software/c/projects/OY2/boards/246"
   "Slack":
@@ -93,7 +109,7 @@ nav_sort: case_sensitive # Capital letters sorted before lowercase
 # External navigation links
 nav_external_links:
   - title: GitHub
-    url: https://github.com/Enterprise-CMCS/macpro-base-template
+    url: https://github.com/cmsgov/macpro-platform-doc-conversion
   - title: Jira
     url: https://qmacbis.atlassian.net/jira/software/c/projects/OY2/boards/246
   - title: Slack
@@ -110,7 +126,7 @@ last_edit_time_format: "%b %e %Y at %I:%M %p" # uses ruby's time format: https:/
 # Footer "Edit this page on GitHub" link text
 gh_edit_link: true # show or hide edit this page link
 gh_edit_link_text: "Edit this page on GitHub"
-gh_edit_repository: "https://github.com/Enterprise-CMCS/macpro-base-template" # the github URL for your repo
+gh_edit_repository: "https://github.com/cmsgov/macpro-platform-doc-conversion" # the github URL for your repo
 gh_edit_branch: "master" # the branch that your docs is served from
 gh_edit_source: docs # the source that your files originate from
 gh_edit_view_mode: "tree" # "tree" or "edit" if you want the user to jump into the editor immediately
