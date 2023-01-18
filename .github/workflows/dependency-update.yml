@@ -15,7 +15,7 @@ jobs:
       deps_branch_name: dep-update
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ssh-key: ${{ secrets.DEPLOY_KEY }}
           fetch-depth: 0
@@ -24,7 +24,7 @@ jobs:
         uses: HatsuneMiku3939/direnv-action@v1
 
       - name: Install Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
 
