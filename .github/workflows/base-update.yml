@@ -1,5 +1,5 @@
 name: Update from Base Template Repo
-
+branches: [temp-update-flow]
 on:
   # schedule:
   #   - cron: "0 0 * * *" # At 12am everyday
