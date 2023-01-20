@@ -3,6 +3,9 @@ branches: [temp-update-flow]
 on:
   # schedule:
   #   - cron: "0 0 * * *" # At 12am everyday
+  push:
+    branches:
+      - temp-update-flow
   workflow_dispatch:
 
 concurrency:
@@ -25,4 +28,7 @@ jobs:
         uses: actions/checkout@v3
       - name: Test Git
         run: |
-          git status
+          git fetch base
+          git checkout -b base-framework-update
+          git merge base/production
+          git commit -m "merge in base framework update"
