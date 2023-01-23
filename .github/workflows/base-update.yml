@@ -4,7 +4,7 @@ on:
   #   - cron: "0 0 * * *" # At 12am everyday
   push:
     branches:
-      - "temp-update-flow"
+      - "update"
   workflow_dispatch:
 
 concurrency:
