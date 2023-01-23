@@ -29,8 +29,11 @@ jobs:
           fetch-depth: 0
       - name: Test Git
         run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git remote add base https://github.com/Enterprise-CMCS/macpro-base-template.git
           git fetch base
-          git checkout -b base-framework-update
+          git branch -D base-update || true
+          git checkout -b base-update
           git merge base/production
           git status
