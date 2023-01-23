@@ -1,4 +1,4 @@
-name: Update from Base Template Repo
+name: Update from Base Template Repository
 on:
   # schedule:
   #   - cron: "0 0 * * *" # At 12am everyday
