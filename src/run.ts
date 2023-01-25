@@ -95,6 +95,45 @@ yargs(process.argv.slice(2))
     }
   )
   .command(
+    "upgrade-base",
+    "this will upgrade your code to the latest version of the base template",
+    {
+      skipDocs: { type: "string", default: true },
+      addRemote: { type: "boolean", default: false },
+    },
+    async ({ skipDocs, addRemote }) => {
+      if (skipDocs) {
+        console.log("testing");
+      }
+
+      const addRemoteCommand: string[] = [];
+
+      if (addRemote) {
+        addRemoteCommand.push(
+          "git",
+          "remote",
+          "add",
+          "base",
+          "https://github.com/Enterprise-CMCS/macpro-base-template"
+        );
+
+        await runner.run_command_and_output(
+          "Upgrade from Base | adding remote",
+          addRemoteCommand,
+          "."
+        );
+      }
+      const fetchBaseCommand = ["git", "fetch", "base"];
+      // const mergeCommand = ["git", "merge", "base/production"];
+
+      await runner.run_command_and_output(
+        "Upgrade from Base | fetching base template",
+        fetchBaseCommand,
+        "."
+      );
+    }
+  )
+  .command(
     "test",
     "run any available tests for an mmdl stage.",
     {
