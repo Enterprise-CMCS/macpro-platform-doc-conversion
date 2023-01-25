@@ -124,11 +124,18 @@ yargs(process.argv.slice(2))
         );
       }
       const fetchBaseCommand = ["git", "fetch", "base"];
-      // const mergeCommand = ["git", "merge", "base/production"];
 
       await runner.run_command_and_output(
         "Upgrade from Base | fetching base template",
         fetchBaseCommand,
+        "."
+      );
+
+      const mergeCommand = ["git", "merge", "base/production"];
+
+      await runner.run_command_and_output(
+        "Upgrade from Base | merging code from base template",
+        mergeCommand,
         "."
       );
     }
