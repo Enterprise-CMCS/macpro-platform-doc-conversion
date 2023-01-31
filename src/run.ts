@@ -98,11 +98,6 @@ yargs(process.argv.slice(2))
     "upgrade-base",
     "this will upgrade your code to the latest version of the base template",
     {
-      skipDocs: {
-        type: "boolean",
-        default: true,
-        description: "Flag disable merging base documentation",
-      },
       addRemote: {
         type: "boolean",
         default: false,
