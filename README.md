@@ -1,4 +1,4 @@
-# macpro-platform-doc-conversion ![Build](https://github.com/CMSgov/macpro-platform-doc-conversion/workflows/Deploy/badge.svg?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/c6b3d112f68f9be7f95a/maintainability)](https://codeclimate.com/github/CMSgov/macpro-platform-doc-conversion/maintainability) [![CodeQL](https://github.com/CMSgov/macpro-platform-doc-conversion/actions/workflows/codeql-analysis.yml/badge.svg?branch=master)](https://github.com/CMSgov/macpro-platform-doc-conversion/actions/workflows/codeql-analysis.yml) [![Dependabot](https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot)](https://dependabot.com/) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Test Coverage](https://api.codeclimate.com/v1/badges/c6b3d112f68f9be7f95a/test_coverage)](https://codeclimate.com/github/CMSgov/macpro-platform-doc-conversion/test_coverage)
+# macpro-platform-doc-conversion ![Build](https://github.com/Enterprise-CMCS/macpro-platform-doc-conversion/workflows/Deploy/badge.svg?branch=master) [![Maintainability](https://api.codeclimate.com/v1/badges/c6b3d112f68f9be7f95a/maintainability)](https://codeclimate.com/github/Enterprise-CMCS/macpro-platform-doc-conversion/maintainability) [![CodeQL](https://github.com/Enterprise-CMCS/macpro-platform-doc-conversion/actions/workflows/codeql-analysis.yml/badge.svg?branch=master)](https://github.com/Enterprise-CMCS/macpro-platform-doc-conversion/actions/workflows/codeql-analysis.yml) [![Dependabot](https://badgen.net/badge/Dependabot/enabled/green?icon=dependabot)](https://dependabot.com/) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier) [![Test Coverage](https://api.codeclimate.com/v1/badges/c6b3d112f68f9be7f95a/test_coverage)](https://codeclimate.com/github/Enterprise-CMCS/macpro-platform-doc-conversion/test_coverage)
 
 MACPRO Platform document conversion APIs.
 
@@ -14,11 +14,11 @@ Initial API:
 
 Our product is promoted through branches. Master is merged to val to affect a master release, and val is merged to production to affect a production release. Please use the buttons below to promote/release code to higher environments.<br />
 
-| branch     | status                                                                                                               | release                                                                                                                                                                                                                                                     |
-| ---------- | -------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| master     | ![master](https://github.com/CMSgov/macpro-platform-doc-conversion/workflows/Deploy/badge.svg?branch=master)         | [![release to master](https://img.shields.io/badge/-Create%20PR-blue.svg)](https://github.com/CMSgov/macpro-platform-doc-conversion/compare?quick_pull=1)                                                                                                   |
-| val        | ![val](https://github.com/CMSgov/macpro-platform-doc-conversion/workflows/Deploy/badge.svg?branch=val)               | [![release to val](https://img.shields.io/badge/-Create%20PR-blue.svg)](https://github.com/CMSgov/macpro-platform-doc-conversion/compare/val...master?quick_pull=1&template=PULL_REQUEST_TEMPLATE.val.md&title=Release%20to%20Val)                          |
-| production | ![production](https://github.com/CMSgov/macpro-platform-doc-conversion/workflows/Deploy/badge.svg?branch=production) | [![release to production](https://img.shields.io/badge/-Create%20PR-blue.svg)](https://github.com/CMSgov/macpro-platform-doc-conversion/compare/production...val?quick_pull=1&template=PULL_REQUEST_TEMPLATE.production.md&title=Release%20to%20Production) |
+| branch     | status                                                                                                                        | release                                                                                                                                                                                                                                                              |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| master     | ![master](https://github.com/Enterprise-CMCS/macpro-platform-doc-conversion/workflows/Deploy/badge.svg?branch=master)         | [![release to master](https://img.shields.io/badge/-Create%20PR-blue.svg)](https://github.com/Enterprise-CMCS/macpro-platform-doc-conversion/compare?quick_pull=1)                                                                                                   |
+| val        | ![val](https://github.com/Enterprise-CMCS/macpro-platform-doc-conversion/workflows/Deploy/badge.svg?branch=val)               | [![release to val](https://img.shields.io/badge/-Create%20PR-blue.svg)](https://github.com/Enterprise-CMCS/macpro-platform-doc-conversion/compare/val...master?quick_pull=1&template=PULL_REQUEST_TEMPLATE.val.md&title=Release%20to%20Val)                          |
+| production | ![production](https://github.com/Enterprise-CMCS/macpro-platform-doc-conversion/workflows/Deploy/badge.svg?branch=production) | [![release to production](https://img.shields.io/badge/-Create%20PR-blue.svg)](https://github.com/Enterprise-CMCS/macpro-platform-doc-conversion/compare/production...val?quick_pull=1&template=PULL_REQUEST_TEMPLATE.production.md&title=Release%20to%20Production) |
 
 ## Architecture
 
@@ -26,7 +26,7 @@ Our product is promoted through branches. Master is merged to val to affect a ma
 
 ## Usage
 
-See master build [here](https://github.com/CMSgov/macpro-platform-doc-conversion/actions?query=branch%3Amaster)
+See master build [here](https://github.com/Enterprise-CMCS/macpro-platform-doc-conversion/actions?query=branch%3Amaster)
 
 This application is built and deployed via GitHub Actions.
 
@@ -133,7 +133,7 @@ Additionally, the IAM role needs `"execute-api:Invoke"` on `"Resource": "arn:aws
 # Connect to ec2 instance via SSM
 # Below assumes python3 and pip3 installed already or .debug ec2 instance being used
 sh-4.2$ cd ~
-sh-4.2$ git clone https://github.com/CMSgov/macpro-platform-doc-conversion
+sh-4.2$ git clone https://github.com/Enterprise-CMCS/macpro-platform-doc-conversion
 sh-4.2$ cd macpro-platform-doc-conversion
 sh-4.2$ git checkout -b my-branch-name
 sh-4.2$ pip3 install -r examples/python/requirements.txt
@@ -196,7 +196,7 @@ This API supports Open Sans and DejaVu Sans fonts natively. The latter font is p
 
 ## Contributing / To-Do
 
-See current open [issues](https://github.com/CMSgov/macpro-platorm-doc-conversion/issues) or check out the [project board](https://github.com/CMSgov/macpro-platform-doc-conversion/projects/1).
+See current open [issues](https://github.com/Enterprise-CMCS/macpro-platorm-doc-conversion/issues) or check out the [project board](https://github.com/Enterprise-CMCS/macpro-platform-doc-conversion/projects/1).
 
 Please feel free to open new issues for defects or enhancements.
 

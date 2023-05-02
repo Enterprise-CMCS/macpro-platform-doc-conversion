@@ -6,25 +6,25 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CMSgov/macpro-platform-doc-conversion.git"
+    "url": "git+https://github.com/Enterprise-CMCS/macpro-platform-doc-conversion.git"
   },
   "author": "",
   "license": "CC0-1.0",
   "bugs": {
-    "url": "https://github.com/CMSgov/macpro-platform-doc-conversion/issues"
+    "url": "https://github.com/Enterprise-CMCS/macpro-platform-doc-conversion/issues"
   },
-  "homepage": "https://github.com/CMSgov/macpro-doc-conversion#readme",
+  "homepage": "https://github.com/Enterprise-CMCS/macpro-doc-conversion#readme",
   "devDependencies": {
     "@stratiformdigital/serverless-idempotency-helper": "^3.2.0",
     "@types/node": "^14.14.6",
     "aws-sdk": "^2.923.0",
     "serverless": "^3.16.0",
     "serverless-bundle": "^5.3.0",
-    "serverless-iam-helper": "CMSgov/serverless-iam-helper",
-    "serverless-online": "CMSgov/serverless-online",
+    "serverless-iam-helper": "Enterprise-CMCS/serverless-iam-helper",
+    "serverless-online": "Enterprise-CMCS/serverless-online",
     "serverless-plugin-scripts": "^1.0.2",
     "serverless-plugin-warmup": "^7.1.0",
-    "serverless-s3-bucket-helper": "CMSgov/serverless-s3-bucket-helper#0.1.1",
+    "serverless-s3-bucket-helper": "Enterprise-CMCS/serverless-s3-bucket-helper#0.1.1",
     "serverless-stack-termination-protection": "^2.0.0"
   },
   "dependencies": {}

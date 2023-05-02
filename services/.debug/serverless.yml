@@ -118,7 +118,7 @@ resources:
             yum install git -y
             sudo su - ssm-user
             cd ~
-            git clone https://github.com/CMSgov/macpro-platform-doc-conversion
+            git clone https://github.com/Enterprise-CMCS/macpro-platform-doc-conversion
 
     DebugEc2SecurityGroupIngressVPN:
       Type: AWS::EC2::SecurityGroupIngress

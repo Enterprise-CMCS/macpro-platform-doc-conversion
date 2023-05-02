@@ -6947,15 +6947,15 @@ serverless-bundle@^5.3.0:
     webpack-node-externals "^2.5.2"
     webpack-permissions-plugin "^1.0.8"
 
-serverless-iam-helper@CMSgov/serverless-iam-helper:
+serverless-iam-helper@Enterprise-CMCS/serverless-iam-helper:
   version "1.0.0"
-  resolved "https://codeload.github.com/CMSgov/serverless-iam-helper/tar.gz/e51709dfbb9461c18712cc429f489504d543c4c7"
+  resolved "https://codeload.github.com/Enterprise-CMCS/serverless-iam-helper/tar.gz/e51709dfbb9461c18712cc429f489504d543c4c7"
   dependencies:
     lodash "^4.17.21"
 
-serverless-online@CMSgov/serverless-online:
+serverless-online@Enterprise-CMCS/serverless-online:
   version "1.0.0"
-  resolved "https://codeload.github.com/CMSgov/serverless-online/tar.gz/1f7d068721f10f13f3c1f1b8e2d4bd21be42e77d"
+  resolved "https://codeload.github.com/Enterprise-CMCS/serverless-online/tar.gz/1f7d068721f10f13f3c1f1b8e2d4bd21be42e77d"
   dependencies:
     chokidar "^3.5.2"
 
@@ -6969,9 +6969,9 @@ serverless-plugin-warmup@^7.1.0:
   resolved "https://registry.yarnpkg.com/serverless-plugin-warmup/-/serverless-plugin-warmup-7.1.0.tgz#884acdc9fe4c5822132adf68a73a5c8ef62e77e9"
   integrity sha512-p2+fIChOnBXkuw3+uyqk7ZNGRj9ymVXTgYYqyxqSJX1tYXBF7QdcKbMUMqU2SDdccFLTRUSejIq7OfRsqe/jdw==
 
-serverless-s3-bucket-helper@CMSgov/serverless-s3-bucket-helper#0.1.1:
+serverless-s3-bucket-helper@Enterprise-CMCS/serverless-s3-bucket-helper#0.1.1:
   version "1.0.0"
-  resolved "https://codeload.github.com/CMSgov/serverless-s3-bucket-helper/tar.gz/f0f6d6a1ffe54e292f0afc93777764bce16a4037"
+  resolved "https://codeload.github.com/Enterprise-CMCS/serverless-s3-bucket-helper/tar.gz/f0f6d6a1ffe54e292f0afc93777764bce16a4037"
 
 serverless-stack-termination-protection@^2.0.0:
   version "2.0.0"

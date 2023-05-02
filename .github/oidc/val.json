@@ -1,7 +1,7 @@
 [
   {
     "ParameterKey": "SubjectClaimFilters",
-    "ParameterValue": "repo:CMSgov/macpro-platform-doc-conversion:ref:refs/heads/val"
+    "ParameterValue": "repo:Enterprise-CMCS/macpro-platform-doc-conversion:ref:refs/heads/val"
   },
   {
     "ParameterKey": "Path",
