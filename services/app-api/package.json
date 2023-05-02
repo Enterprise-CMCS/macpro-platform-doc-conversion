@@ -11,7 +11,7 @@
   "license": "CC0-1.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CMSgov/macpro-platform-doc-conversion.git"
+    "url": "git+https://github.com/Enterprise-CMCS/macpro-platform-doc-conversion.git"
   },
   "devDependencies": {
     "@stratiformdigital/serverless-idempotency-helper": "^3.2.0",
