@@ -8,9 +8,9 @@ package:
 plugins:
   - serverless-stack-termination-protection
   - "@stratiformdigital/serverless-idempotency-helper"
-  - serverless-iam-helper
+  - "@stratiformdigital/serverless-iam-helper"
   - serverless-s3-bucket-helper
-  - serverless-online
+  - "@stratiformdigital/serverless-online"
 
 custom:
   stage: ${opt:stage, self:provider.stage}

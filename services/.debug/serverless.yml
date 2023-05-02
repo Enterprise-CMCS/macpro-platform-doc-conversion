@@ -5,7 +5,7 @@ frameworkVersion: "3"
 plugins:
   - serverless-plugin-scripts
   - serverless-s3-bucket-helper
-  - serverless-iam-helper
+  - "@stratiformdigital/serverless-iam-helper"
 
 provider:
   name: aws
